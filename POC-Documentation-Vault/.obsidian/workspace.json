@@ -201,8 +201,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "8af97f161e0db8df",
+  "active": "d82d385fb03a7c23",
   "lastOpenFiles": [
+    "scripts/publish_pages.py",
+    "requirements-pages.txt",
+    "README.md",
     "projects/Address/uk-address-format.md",
     "projects/Address/addressing-standards.md",
     "projects/Address/loqate-integration.md",
@@ -222,7 +225,6 @@
     "copilot/copilot-conversations/agent__the_internal-cdd-api_document_seems_to_be_missing@20261103_103044.md",
     "internal-cdd-api.md",
     "wiki/projects.md",
-    "README.md",
     "wiki/application-project-organisation.md",
     "projects/WIP/euro-property-transaction-wip-process.md",
     "projects/Instruction",
@@ -233,11 +235,9 @@
     "projects/WIP/README.md",
     "projects/thirdfort/internal-cdd-process-prd.md",
     "projects/WIP",
-    "projects/thirdfort/cdd-poc-app.md",
     "projects/thirdfort",
     "copilot/skills/json-canvas/LICENSE",
     "copilot/skills/json-canvas/references",
-    "copilot/skills/json-canvas",
-    "copilot/skills/obsidian-bases/LICENSE"
+    "copilot/skills/json-canvas"
   ]
 }
