@@ -10,10 +10,12 @@ its as-built implementation documentation are maintained in the standalone repos
 
 ## Documentation
 
-- [[application-design|Application design pointer]]
-- [[loqate-integration|Loqate integration pointer]]
-- [[addressing-standards|Addressing standards]]
-- [[uk-address-format|UK address format]]
+- [[wiki/Poc-Design|POC application design]]
+- [[wiki/Loqate-api|Loqate API integration]]
+- [[wiki/Overview|International addressing standards]]
+- [[wiki/UPU-S42|UPU S42 addressing standard]]
+- [[wiki/ISO-20022|ISO 20022 address schema]]
+- [[wiki/UK-Address-Format|UK address format]]
 
 ## Application
 
