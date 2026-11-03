@@ -15,7 +15,10 @@ import markdown
 VAULT = Path(__file__).resolve().parents[1]
 OUTPUT = VAULT / "_site"
 LINK_PATTERN = re.compile(r"\[\[([^\]]+)\]\]")
-MARKDOWN_LINK_PATTERN = re.compile(r"(?<!!)\]\(([^)\s]+\.md(?:#[^)\s]*)?)", re.IGNORECASE)
+MARKDOWN_LINK_PATTERN = re.compile(
+    r"(?<!!)\[([^\]]+)\]\(([^)\s]+\.md(?:#[^)\s]*)?)\)",
+    re.IGNORECASE,
+)
 FRONT_MATTER_PATTERN = re.compile(r"\A---\r?\n.*?\r?\n---\r?\n?", re.DOTALL)
 FENCE_PATTERN = re.compile(r"^\s*(```|~~~)")
 
@@ -214,13 +217,13 @@ def rewrite_links(text: str, current: Path, by_path: dict[str, Path], by_stem: d
         return f"[{title}]({href})"
 
     def replace_markdown_link(match: re.Match[str]) -> str:
-        destination = match.group(1)
+        label, destination = match.groups()
         parsed = urlsplit(destination)
         resolved = resolve_page(parsed.path, current, by_path, by_stem)
         if resolved is None:
-            return match.group(0)
+            return label
         href = page_url(current, output_path(resolved), parsed.fragment)
-        return f"]({href}"
+        return f"[{label}]({href})"
 
     lines = []
     fence_character = None
