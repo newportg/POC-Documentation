@@ -1,20 +1,22 @@
 # UK Address Format
 
-The project's UPU S42 notes identify these address elements for a UK postal address:
+As described by UPU S42 — uses 9 of 15 elements. Source: `outputs/international-addressing.html` (UK Format tab).
 
-| Element | Example |
-|---|---|
-| Organization | Acme Corp |
-| Department | Marketing |
-| Post box | PO Box 123 |
-| Sub-building/building | Unit 5, High Street |
-| Premise/thoroughfare | 93 Teagues Crescent |
-| Double dependent locality | Trench |
-| Dependent locality | Telford |
-| Locality | Telford |
-| Postal code | TF2 6RF |
+## Address Lines
 
-## Example provider response
+| # | Field | Example |
+|---|-------|---------|
+| 1 | Organization | "Acme Corp" |
+| 2 | Department | "Marketing" |
+| 3 | PostBox | "PO Box 123" |
+| 4 | SubBuilding Building | "Unit 5, High Street" |
+| 5 | Premise Thoroughfare | "93 Teagues Crescent" |
+| 6 | DoubleDependentLocality | "Trench" |
+| 7 | DependentLocality | "Telford" |
+| 8 | Locality | "Telford" |
+| 9 | PostalCode | "TF2 6RF" |
+
+## Example: 93 Teagues Crescent
 
 ```json
 {
@@ -23,6 +25,9 @@ The project's UPU S42 notes identify these address elements for a UK postal addr
   "Address2": "Trench",
   "Address3": "Telford",
   "Address4": "TF2 6RF",
+  "DeliveryAddress": "93 Teagues Crescent<br>Trench",
+  "DeliveryAddress1": "93 Teagues Crescent",
+  "DeliveryAddress2": "Trench",
   "AdministrativeArea": "Shropshire",
   "Locality": "Telford",
   "DependentLocality": "Trench",
@@ -30,9 +35,18 @@ The project's UPU S42 notes identify these address elements for a UK postal addr
   "Premise": "93",
   "PostalCode": "TF2 6RF",
   "CountryName": "United Kingdom",
+  "ISO3166-2": "GB",
+  "ISO3166-3": "GBR",
+  "ISO3166-N": "826",
+  "PostalCodePrimary": "TF2 6RF",
+  "AVC": "V44-I44-P6-100",
+  "AQI": "A",
+  "Sequence": "1",
+  "MatchRuleLabel": "Rlfnp",
+  "HyphenClass": "B",
+  "PremiseNumber": "93",
   "Country": "GB"
 }
 ```
 
-Provider response fields and formatting rules can change. Treat this as an example,
-not a canonical address schema.
+Related: [[UPU-S42]], [[Loqate-api]].

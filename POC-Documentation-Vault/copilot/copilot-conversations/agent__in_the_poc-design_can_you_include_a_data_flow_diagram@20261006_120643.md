@@ -12,7 +12,7 @@ tags:
 **user**: in the poc-design can you include a data flow diagram
 [Timestamp: 2026/10/06 12:06:43]
 
-**ai**: Added a Mermaid data flow diagram to the Data Flow section of [[poc-design]], expanding the one-line summary into a step-by-step flow: search → Find API → markers → select → cache check → Verify API → cache store → formatted address.
+**ai**: Added a Mermaid data flow diagram to the Data Flow section of [[Poc-Design]], expanding the one-line summary into a step-by-step flow: search → Find API → markers → select → cache check → Verify API → cache store → formatted address.
 
 Let me know if you'd like it changed to a sequence diagram style (matching API call ordering) or committed to git.
 [Timestamp: 2026/10/06 12:06:43]
@@ -20,13 +20,13 @@ Let me know if you'd like it changed to a sequence diagram style (matching API c
 **user**: i was hoping for a data flow diagram like the one in the poc-address-design file
 [Timestamp: 2026/10/06 12:08:04]
 
-**ai**: Replaced the flowchart-style diagram in [[poc-design]] with the same `sequenceDiagram` style used in [[poc-address-design]] — User / Svelte SPA / API Routes / LOQATE / SQLite Cache participants, including the cache hit/miss alt block.
+**ai**: Replaced the flowchart-style diagram in [[Poc-Design]] with the same `sequenceDiagram` style used in [[poc-address-design]] — User / Svelte SPA / API Routes / LOQATE / SQLite Cache participants, including the cache hit/miss alt block.
 [Timestamp: 2026/10/06 12:08:04]
 
 **user**: can you include the component design and the userflow from the poc-address-design file
 [Timestamp: 2026/10/06 12:11:12]
 
-**ai**: Added both to [[poc-design]]:
+**ai**: Added both to [[Poc-Design]]:
 
 - **Component Diagram** — the `graph LR` pages/components/lib/API diagram, placed before the Data Flow section.
 - **User Flow** — replaced the one-line summary with the `flowchart TD` from [[poc-address-design]].
@@ -53,18 +53,18 @@ Also note: anything unique that was only in `poc-address-design.md` (e.g. the LO
 **ai**: Mostly yes — but not entirely. Comparing `wiki/poc-address.md` against the other two files:
 
 **Covered elsewhere:**
-- Architecture summary → covered by diagrams + stack table in [[poc-design]]
-- Endpoint list → [[poc-design]] table
-- Find recursive drill-down → [[loqate-api]] (and the detailed version was in the now-deleted `poc-address-design.md`)
-- Verify API purpose → [[loqate-api]]
-- Response fields → [[loqate-api]]
+- Architecture summary → covered by diagrams + stack table in [[Poc-Design]]
+- Endpoint list → [[Poc-Design]] table
+- Find recursive drill-down → [[Loqate-api]] (and the detailed version was in the now-deleted `poc-address-design.md`)
+- Verify API purpose → [[Loqate-api]]
+- Response fields → [[Loqate-api]]
 
 **Unique to `poc-address.md`:**
 - The **UPU S42** note (line 53–55) — not recorded anywhere else
 - The **archive/Readme.md** reference links (lines 57–60)
 - The concrete Find example (`tf26rf` → Postcode container → addresses)
 
-If you want to delete it, I'd first move those two bits into [[loqate-api]] or [[poc-design]]. Also heads-up: the full Verify API request/response field details (request body JSON, AddressFormat field list) lived only in the deleted `poc-address-design.md` — `loqate-api.md` covers the fields in a table but not the request body shape. Say the word if you want me to consolidate any of this before removing the file.
+If you want to delete it, I'd first move those two bits into [[Loqate-api]] or [[Poc-Design]]. Also heads-up: the full Verify API request/response field details (request body JSON, AddressFormat field list) lived only in the deleted `poc-address-design.md` — `loqate-api.md` covers the fields in a table but not the request body shape. Say the word if you want me to consolidate any of this before removing the file.
 
 (Side note: I also fixed a stray self-link I'd introduced in `loqate-api.md`'s Related line.)
 [Timestamp: 2026/10/06 12:14:53]
@@ -74,10 +74,10 @@ If you want to delete it, I'd first move those two bits into [[loqate-api]] or [
 
 **ai**: Consolidated and removed `wiki/poc-address.md`:
 
-- **UPU S42 standard note** → moved to [[poc-design]] (new "Standard" section)
-- **archive/Readme.md references** → moved to [[poc-design]] (new "Reference" section)
-- **Verify API request body + full field list** → moved to [[loqate-api]] (new "Verify API Request" section, restoring detail lost when `poc-address-design.md` was removed)
-- Removed the `[[poc-address]]` Related links from [[poc-design]] and [[loqate-api]]
+- **UPU S42 standard note** → moved to [[Poc-Design]] (new "Standard" section)
+- **archive/Readme.md references** → moved to [[Poc-Design]] (new "Reference" section)
+- **Verify API request body + full field list** → moved to [[Loqate-api]] (new "Verify API Request" section, restoring detail lost when `poc-address-design.md` was removed)
+- Removed the `[[poc-address]]` Related links from [[Poc-Design]] and [[Loqate-api]]
 
 `[[poc-design]]` and `[[loqate-api]]` now cover everything. The Find recursive example (`tf26rf` → postcode container → addresses) was already in `loqate-api.md`, so no loss there. Same caveat as before: `.obsidian/workspace.json` may still list it as an open tab.
 [Timestamp: 2026/10/06 12:16:53]
@@ -85,7 +85,7 @@ If you want to delete it, I'd first move those two bits into [[loqate-api]] or [
 **user**: can you clean up the loqate-api file, Verify API Request is repeated
 [Timestamp: 2026/10/06 12:20:18]
 
-**ai**: Merged the two "Verify API Request" sections in [[loqate-api]] into one: the curl example, the v1.20 endpoint note, the request body JSON, and the key response fields now live under a single heading. The duplicate section and heading are gone.
+**ai**: Merged the two "Verify API Request" sections in [[Loqate-api]] into one: the curl example, the v1.20 endpoint note, the request body JSON, and the key response fields now live under a single heading. The duplicate section and heading are gone.
 [Timestamp: 2026/10/06 12:20:18]
 
 **user**: can you update the links

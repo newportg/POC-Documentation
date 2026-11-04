@@ -52,7 +52,7 @@
   "inlineEditCommands": [],
   "projectList": [],
   "lastDismissedVersion": null,
-  "lastShownStartupVersion": null,
+  "lastShownStartupVersion": "4.0.18",
   "passMarkdownImages": true,
   "enableAutonomousAgent": true,
   "enableCustomPromptTemplating": true,
@@ -245,6 +245,15 @@
       },
       "configuredModelId": "44dc867d-96a2-4e22-b002-c173171cbcb4",
       "configuredAt": 1793703012638
+    },
+    {
+      "providerId": "3483efcd-d3ac-4cee-aed1-61e1d294d891",
+      "info": {
+        "id": "opencode/crouton-alpha-free",
+        "displayName": "opencode/Crouton Alpha Free"
+      },
+      "configuredModelId": "b83b241f-c9ba-4fe8-961f-9a5c7c523789",
+      "configuredAt": 1793791866636
     }
   ],
   "backends": {

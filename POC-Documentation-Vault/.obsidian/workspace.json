@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/Asset/asset-prd.md",
+                "file": "projects/Address/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "asset-prd"
+              "title": "README"
             }
           }
         ]
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "projects/Asset/asset-prd.md",
+                "file": "projects/Address/README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -203,41 +203,41 @@
   },
   "active": "d82d385fb03a7c23",
   "lastOpenFiles": [
-    "_site/wiki/projects.html",
-    "_site/wiki/application-project-organisation.html",
-    "_site/wiki",
-    "_site/index.html",
-    "_site/projects/WIP/WIP-process-prd.html",
-    "_site/projects/WIP/README.html",
-    "_site/projects/WIP/euro-wip-entity-model.html",
-    "_site/projects/WIP/euro-property-transaction-wip-process.html",
-    "_site/projects/WIP",
-    "_site/projects/thirdfort/thirdfort-api-notes.html",
-    "_site/projects/thirdfort/README.html",
-    "README.md",
+    "projects/Address/UPU-S42.md",
+    "projects/Address/UK-Address-Format.md",
+    "projects/Address/README.md",
+    "projects/Address/Poc-Design.md",
+    "projects/Address/Loqate-api.md",
+    "projects/Address/ISO-20022.md",
+    "wiki/projects.md",
+    "projects/Address/Overview.md",
     "projects/Address/uk-address-format.md",
-    "projects/Address/addressing-standards.md",
+    "_site/projects/Address/wiki/UPU-S42.html",
+    "_site/projects/Address/wiki/UK-Address-Format.html",
+    "_site/projects/Address/wiki/Poc-Design.html",
+    "_site/projects/Address/wiki/Overview.html",
+    "_site/projects/Address/wiki/Loqate-api.html",
+    "_site/projects/Address/wiki/ISO-20022.html",
+    "_site/projects/Address/wiki",
+    "projects/Address/wiki/UPU-S42.md",
+    "projects/Address/wiki/UK-Address-Format.md",
+    "projects/Address/wiki/Poc-Design.md",
+    "projects/Address/wiki/Overview.md",
+    "projects/Address/wiki/Loqate-api.md",
+    "projects/Address/wiki/ISO-20022.md",
+    "projects/Address/wiki",
     "projects/Address/loqate-integration.md",
     "projects/Address/application-design.md",
-    "projects/Address/README.md",
-    "projects/Asset/README.md",
+    "projects/Address/addressing-standards.md",
     "projects/Asset/asset-prd.md",
+    "_site/wiki/projects.html",
+    "_site/wiki/application-project-organisation.html",
+    "README.md",
+    "projects/Asset/README.md",
     "projects/Party/README.md",
     "projects/Party/party-prd.md",
     "projects/Party/individual-model.md",
     "projects/Party/company-model.md",
-    "copilot/copilot-conversations/agent__can_you_create_a_PRD_for_party,_a_party_can@20261103_105145.md",
-    "copilot/copilot-conversations/agent__can_you_define_a_PRD_for_Party,_where_a_Party@20261103_104500.md",
-    "projects/thirdfort/README.md",
-    "projects/thirdfort/thirdfort-api-notes.md",
-    "copilot/copilot-conversations/agent__the_internal-cdd-api_document_seems_to_be_missing@20261103_103044.md",
-    "internal-cdd-api.md",
-    "wiki/projects.md",
-    "wiki/application-project-organisation.md",
-    "projects/WIP/euro-property-transaction-wip-process.md",
-    "projects/WIP/euro-wip-entity-model.md",
-    "projects/WIP/WIP-process-prd.md",
-    "projects/WIP/README.md",
-    "projects/thirdfort/internal-cdd-process-prd.md"
+    "copilot/copilot-conversations/agent__can_you_create_a_PRD_for_party,_a_party_can@20261103_105145.md"
   ]
 }

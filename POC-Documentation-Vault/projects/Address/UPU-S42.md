@@ -24,4 +24,4 @@ The UPU S42 standard provides a comprehensive framework for postal addressing, d
 - Promotes efficient mail processing and data verification
 - Designed for easy adaptation by web applications
 
-Related: [[Overview]], [[UK-Address-Format]], [[ISO-20022]].
+Related: [[UK-Address-Format]], [[ISO-20022]].
