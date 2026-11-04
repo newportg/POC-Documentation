@@ -1,6 +1,7 @@
 # LOQATE API Integration
 
-Reference implementation for address verification. Source: `outputs/international-addressing.html` (LOQATE API tab).
+Reference implementation for address verification.
+Source: [generated standards page](C:/Source/Repos/poc-address/docs/index.html) (LOQATE API tab).
 
 ## Find API (Interactive Search)
 
@@ -142,5 +143,3 @@ curl --request POST \
     "Thoroughfare": "Liverpool Street"
   }
 ```
-
-

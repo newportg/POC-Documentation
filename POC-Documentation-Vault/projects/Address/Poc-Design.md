@@ -1,6 +1,7 @@
 # POC Address Application Design
 
-Architecture, data flow, and technology stack as presented on the POC Design tab of `outputs/international-addressing.html`.
+Architecture, data flow, and technology stack for the intended production application,
+as presented on the POC Design tab of the [reference page](C:/Source/Repos/poc-address/docs/index.html).
 
 ## Architecture
 
