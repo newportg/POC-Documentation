@@ -1,14 +1,19 @@
 
 # Party
 
-Status: Browser POC; the live transport has not been verified against a running service.
+Status: Static browser POC in progress; demo data will be stored locally, with no
+backend or live service integration.
 
-Repo: `C:\Source\Repos\poc-party`
+Repo: `C:\Source\Repos\poc-party`
 
-The application and implementation documentation are maintained in the standalone
-repository. This folder holds discovery notes and the draft requirements.
+The standalone repository contains the runnable Party app and its implementation
+documentation. This folder holds discovery notes, domain models, and requirements.
 
 ## Project notes
+
+The static POC demonstrates reusable individual, company, and group Parties. It uses
+fictional browser-local data and does not implement production authorization, audit,
+retention, identity matching, or compliance controls.
 
 ## Requirements
 
@@ -19,7 +24,7 @@ repository. This folder holds discovery notes and the draft requirements.
 
 ## Application documentation
 
-The internal API design, OpenAPI draft, journey state model, and runnable browser POC
-are in `C:\Source\Repos\poc-party`. Start with that repository's README.
+The runnable app, run instructions, and implementation design are in
+`C:\Source\Repos\poc-party`. Start with that repository's README.
 
-Last updated: 2026-11-03.
+Last updated: 2026-11-05.
