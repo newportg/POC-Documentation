@@ -1,6 +1,6 @@
 # Asset — Product Requirements Document
 
-Status: draft for review. Owner: Solution Architecture. Date: 2026-11-03.
+Status: draft for review. Owner: Solution Architecture. Updated: 2026-11-05.
 
 ## Summary
 
@@ -161,6 +161,85 @@ An uncertain match is presented for review; the system does not silently merge a
 3. Ending or correcting the relationship preserves its history and does not delete
    either the Party or the Asset.
 
+## EuroWIP application — Property views
+
+The EuroWIP browser POC has two Property surfaces: an optional Property step in the
+New Instruction wizard and a read-only Property record view backed by `kf_Property`
+and the `kf_DealProperty` junction. These describe the current application surface,
+not the complete target Asset model in this PRD.
+
+### Property step in New Instruction
+
+- Property is an optional step between Client and Details. The user can continue
+  without entering a property.
+- The step provides a country selector and address search. The user chooses a
+  country before searching; at least three characters are required to run Find.
+- Search results are selectable; selecting a result invokes address verification
+  and can populate Address, City, Postcode, Country, and coordinates in the form.
+  The current form displays a Sector selector with Office, Residential, Retail,
+  Industrial, and Other values.
+- Address fields can also be entered or corrected manually. Search and verification
+  failures are shown in the UI; when verification fails after selecting a result,
+  the search result's street text may still be filled and the user is told to check
+  the remaining fields.
+- The Review step shows the address or "None". On Instruction creation, an entered
+  address or city is resolved to a Property; the Instruction stores that Property
+  as its primary property and copies the selected Sector to its own sector field.
+
+### Property record view
+
+#### Current behavior
+
+- The Properties list shows Property name, Sector, Site, the number of linked
+  Instruction junction records, and the number of WIP lines that directly reference
+  the Property.
+- List search matches Property name or Sector. It does not search Site or an
+  independently stored address.
+- The Property detail header shows the Property name, Sector, and Site when present.
+  Its detail fields are Property, Sector, and Site.
+- A **Linked instructions (`kf_DealProperty`)** subgrid shows each junction reference,
+  Instruction reference, and Instruction status. Selecting a row opens that
+  Instruction. When none are linked, the view displays an empty state.
+- The detail view provides navigation back to the Properties list. It does not
+  provide Property create or edit actions.
+- The subgrid's Status column is the Instruction status, not the status of the
+  `kf_DealProperty` relationship. The current query includes junction records without
+  filtering by relationship status; the displayed count is therefore not an
+  active-only count.
+
+#### POC data shape and gap to the Asset target
+
+In the POC schema, `kf_Property` is represented by a required name, required Sector,
+and optional Site lookup. The Site record has a name. The `kf_DealProperty` junction
+links an Instruction and Property and includes relationship status (Active, Removed,
+or Sold), added/removed dates, and notes. The Property view does not display those
+junction details beyond the junction reference and linked Instruction.
+
+The Instruction wizard can construct the Property name from address, city, postcode,
+and country. The current POC stores that combined value as the Property name, along
+with Sector; it does not persist separate address components, country, coordinates,
+Loqate verification ID or raw response, asset type, external identifiers, or a
+geospatial boundary on `kf_Property`. Coordinates and the verification response stay
+in wizard state. A Site is not automatically assigned by this flow.
+
+The wizard sets the Instruction's direct `property_id` lookup. The Property detail
+subgrid, however, reads linked Instructions through `kf_DealProperty`. The current
+create flow does not create a `kf_DealProperty` row, so a wizard-created direct
+Property reference is not guaranteed to appear in the detail subgrid. The product
+must establish which relationship is canonical and keep creation, listing, and
+reporting consistent.
+
+These are implementation observations, not a decision to remove the broader
+requirements above. In particular, address, geolocation, asset type, provenance,
+asset composition, and auditable Property maintenance remain target-model
+requirements or open design decisions. Confirm how the POC's Property and Site
+records map to the canonical Asset, Site, and Asset-relationship concepts before
+treating the current storage shape as the production schema.
+
+Implementation reference: `C:\Source\Obsidian\Projects\POC-EuroWIP\POC-EuroWIP-Vault\App\src\pages\PropertyForm.svelte`,
+`src\pages\NewInstruction.svelte`, `src\lib\appConfig.js`, `src\lib\repo.js`,
+`src\lib\schema.js`, and `src\lib\loqate.js`.
+
 ## Functional requirements
 
 Priority: **Must** (required for MVP), **Should** (important but deferrable),
@@ -195,6 +274,15 @@ Priority: **Must** (required for MVP), **Should** (important but deferrable),
 | DET-6 | Should | The model can store area or measurement values with an explicit quantity type and unit; conversion or aggregation must not discard the original unit or source. |
 | DET-7 | Must | Where an estate boundary is stored as geometry, record its coordinate reference system, source, capture date, and known precision or confidence. |
 | DET-8 | Could | Store geospatial boundaries for non-estate assets with a declared coordinate reference system, precision, source, and confidence. |
+| DET-9 | Must | The Property list and detail view expose the Property name, Sector, and optional Site association; the list also exposes linked Instruction and WIP reference counts. |
+| DET-10 | Must | The Property detail view lists Instructions through `kf_DealProperty`, shows the junction reference and Instruction status, and allows navigation to the selected Instruction. The displayed status must be identified as the Instruction status, not the junction status. |
+| DET-11 | Must | A Property with no linked Instructions displays an explicit empty state, and the detail view provides a route back to the Properties list. |
+| DET-12 | Should | Property search supports name and Sector at minimum; address and Site search are added when those values are modeled as distinct searchable fields. |
+| DET-13 | Must | The user interface distinguishes the `kf_DealProperty` relationship status and dates from the linked Instruction status. Relationship counts and subgrids must state whether they include removed or sold links. |
+| DET-14 | Must | The New Instruction flow provides an optional Property step with country, address, city, postcode, and Sector inputs; users can proceed without selecting a Property. |
+| DET-15 | Should | The Property step supports country-scoped address Find and Verify, presents selectable matches, shows verification errors, and permits review or correction of the returned fields. Unverified fallback values must not be presented as verified. |
+| DET-16 | Must | A Property selected or resolved in the New Instruction flow is represented through the approved canonical Instruction-Property relationship and is visible in the Property's linked-Instructions view. |
+| DET-17 | Must | Address, country, and coordinates are persisted as distinct location data with source and verification provenance; they are not collapsed into the Property display name. |
 
 ### Asset composition and relationships
 
@@ -280,6 +368,12 @@ The MVP includes:
 - Explicit relationships between Asset records, including component relationships.
 - References from matters/instructions and typed Party-to-Asset associations.
 - Audit history, authorization, inactive/archive status, and validation.
+- The EuroWIP Property list and detail experience: Property name, Sector, optional
+  Site, Instruction/WIP reference counts, and navigation to linked Instructions via
+  `kf_DealProperty`.
+- The optional Property step in New Instruction, including country-scoped address
+  search/verification, editable address fields, Sector selection, and association of
+  the resulting Property with its Instruction.
 
 The MVP does not require detailed GIS boundaries, automated registry integration,
 valuation, title verification, legal analysis, or a comprehensive international
@@ -305,11 +399,42 @@ property taxonomy.
    rules apply to asset and transaction-linked data?
 9. **WIP integration:** Confirm whether the existing WIP `propertyId` reference should
    point directly to the canonical Asset identifier or to an adapter/mapping.
+10. **POC-to-target mapping:** Is `kf_Property` the canonical Asset record, and how
+    should its name/sector/site fields map to typed Assets and explicit Asset
+    relationships?
+11. **Property maintenance:** Should the Property list/detail remain read-only, or
+    should authorized users be able to create and update Property and Site records?
+12. **Relationship display:** Should the Linked Instructions subgrid show the
+    `kf_DealProperty` status and dates, and should removed/sold links be included or
+    separated from active Instruction links and counts?
+13. **Address persistence:** Should the address supplied in the Instruction wizard
+    remain a display name, or be stored as structured Property address fields with
+    geolocation and provenance?
+14. **Instruction-Property consistency:** Is the direct Instruction `property_id`
+    lookup or `kf_DealProperty` the canonical association for the primary Property?
+    Should the wizard create a junction record so the Property subgrid and counts
+    reflect the association?
 
 ## Acceptance criteria
 
 - A user can create and retrieve an Asset of type land parcel, site, estate, building,
   or unit.
+- The Property list shows Property, Sector, Site, linked Instruction count, and WIP
+  line count; searching by name or Sector returns matching records.
+- The New Instruction Property step can be skipped, or can use a country-scoped
+  address search and verification; the user can inspect or correct the address and
+  Sector before creating the Instruction.
+- When a Property is supplied during Instruction creation, the canonical
+  Instruction-Property relationship is created and the Property detail view shows
+  the linked Instruction.
+- Opening a Property shows its name, Sector, and optional Site, plus the
+  `kf_DealProperty`-linked Instructions with their link reference and Instruction
+  status. Selecting a linked Instruction opens that record.
+- A Property with no linked Instructions shows an empty state; returning from the
+  Property detail view returns to the Properties list.
+- The application distinguishes Instruction status from the relationship status and
+  makes clear whether removed or sold relationships are included in displayed lists
+  and counts.
 - An apartment or commercial Unit references exactly one enclosing Building for its
   active relationship period, and retrieving the Building shows that Unit through the
   inverse relationship.
