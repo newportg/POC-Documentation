@@ -4,15 +4,15 @@ Status: draft for review. Owner: Solution Architecture. Date: 2026-11-03.
 
 ## Definition
 
-A **Company** is an organization represented as a Party. It has a stable Party
-identifier and identity details describing the organization. Depending on the
+A **Company** is an organisation represented as a Party. It has a stable Party
+identifier and identity details describing the organisation. Depending on the
 jurisdiction and business context, it may be a registered legal entity or another
-recognized organizational form.
+recognised organisational form.
 
-A Company record describes **which organization this is**. It does not, by itself,
-describe the organization's role in a matter, its owners or controllers, an
+A Company record describes **which organisation this is**. It does not, by itself,
+describe the organisation's role in a matter, its owners or controllers, an
 individual's authority to act for it, or the outcome of a company verification or
-compliance check. Those facts belong to separately modeled relationships or processes.
+compliance check. Those facts belong to separately modelled relationships or processes.
 
 ## Relationship to Party
 

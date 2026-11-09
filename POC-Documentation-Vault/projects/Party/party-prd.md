@@ -62,14 +62,14 @@ participant while retaining its constituent members.
 
 ## Core concepts
 
-| Concept | Meaning |
-|---|---|
-| **Party** | A stable, reusable business identity. Every Party has exactly one type: `individual`, `company`, or `group`. |
-| **Individual** | A natural person represented as a Party; see [[individual-model|Individual Party — Domain Model]]. |
-| **Company** | A legally or commercially recognized organization represented as a Party; see [[company-model|Company Party — Domain Model]]. |
-| **Group** | A Party composed of one or more member Parties. In the MVP, its members are individuals and/or companies. |
-| **Membership** | A time-aware relationship between a group Party and a member Party, optionally describing the member's role in that group. |
-| **Participation** | A relationship between a Party and a matter or process. It carries context-specific roles, such as purchaser or director, without changing the Party's identity. |
+| Concept           | Meaning                                                                                                                                                          | 
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | 
+| **Party**         | A stable, reusable business identity. Every Party has exactly one type: `individual`, `company`, or `group`.                                                     | 
+| **Individual**    | A natural person represented as a Party; see [[individual-model]]                                                                                                | 
+| **Company**       | A legally or commercially recognized organization represented as a Party; see [[company-model]]                                                                  | 
+| **Group**         | A Party composed of one or more member Parties. In the MVP, its members are individuals and/or companies.                                                        | 
+| **Membership**    | A time-aware relationship between a group Party and a member Party, optionally describing the member's role in that group.                                       | 
+| **Participation** | A relationship between a Party and a matter or process. It carries context-specific roles, such as purchaser or director, without changing the Party's identity. | 
 
 ```mermaid
 erDiagram

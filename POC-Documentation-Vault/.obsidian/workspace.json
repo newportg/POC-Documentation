@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/Address/README.md",
-                "mode": "source",
-                "source": false
+                "file": "projects/Asset/asset-prd.md",
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "asset-prd"
             }
           }
         ]
@@ -185,7 +185,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 212.16650390625
+    "width": 708.833251953125
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -201,12 +201,25 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "b9cf5acb2ece7c78",
+  "active": "d82d385fb03a7c23",
   "lastOpenFiles": [
+    "projects/Asset/README.md",
+    "projects/Asset/asset-prd.md",
+    "projects/Instruction/instruction-prd.md",
+    "projects/WIP/WIP-process-prd.md",
+    "projects/Instruction/README.md",
+    "projects/WIP/README.md",
+    "projects/WIP/euro-wip-entity-model.md",
+    "projects/WIP/euro-property-transaction-wip-process.md",
+    "projects/Party/individual-model.md",
+    "projects/Party/party-prd.md",
+    "projects/Party/README.md",
+    "projects/Party/company-model.md",
+    "copilot/copilot-conversations/agent__how_does_the_company-model_differ_from_what_is_return_by@20261105_122936.md",
+    "projects/Address/README.md",
     "projects/Address/Overview.md",
     "projects/Address/UPU-S42.md",
     "projects/Address/UK-Address-Format.md",
-    "projects/Address/README.md",
     "projects/Address/Poc-Design.md",
     "projects/Address/Loqate-api.md",
     "projects/Address/ISO-20022.md",
@@ -223,21 +236,8 @@
     "projects/Address/wiki/UK-Address-Format.md",
     "projects/Address/wiki/Poc-Design.md",
     "projects/Address/wiki/Overview.md",
-    "projects/Address/wiki/Loqate-api.md",
-    "projects/Address/wiki/ISO-20022.md",
     "projects/Address/wiki",
-    "projects/Address/loqate-integration.md",
-    "projects/Address/application-design.md",
-    "projects/Address/addressing-standards.md",
-    "projects/Asset/asset-prd.md",
     "_site/wiki/projects.html",
-    "_site/wiki/application-project-organisation.html",
-    "README.md",
-    "projects/Asset/README.md",
-    "projects/Party/README.md",
-    "projects/Party/party-prd.md",
-    "projects/Party/individual-model.md",
-    "projects/Party/company-model.md",
-    "copilot/copilot-conversations/agent__can_you_create_a_PRD_for_party,_a_party_can@20261103_105145.md"
+    "_site/wiki/application-project-organisation.html"
   ]
 }
