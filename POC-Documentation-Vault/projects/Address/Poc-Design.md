@@ -95,8 +95,7 @@ The application is plain browser-native HTML, CSS, and JavaScript. It has no pac
 manifest, frontend framework runtime, compile step, or server-side code. Open
 `src/app/poc-address-app.html` directly or serve the files as static assets. GitHub
 Pages publishes the app as `docs/index.html` and the standards guide as
-`docs/documentation.html`. A copy of the app and client remains under `docs/app/`
-for compatibility with the earlier URL.
+`docs/documentation.html`. The Loqate client is published alongside the app.
 
 ## Security and limitations
 
