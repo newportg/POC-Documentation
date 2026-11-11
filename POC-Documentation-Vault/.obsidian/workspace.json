@@ -204,6 +204,7 @@
   },
   "active": "d82d385fb03a7c23",
   "lastOpenFiles": [
+    "projects/Address/Poc-Design.md",
     "copilot/copilot-conversations/agent__is_this_working@20261111_110811.md",
     "wiki/projects.md",
     "README.md",
@@ -238,7 +239,6 @@
     "projects/Instruction/instruction-prd.md",
     "projects/WIP/WIP-process-prd.md",
     "projects/Instruction/README.md",
-    "projects/WIP/README.md",
     "_site/projects/Address/wiki/UPU-S42.html"
   ]
 }
