@@ -50,6 +50,8 @@ sequenceDiagram
         Loqate-->>App: Address results
     end
     App->>Map: Plot markers where coordinates are available
+    User->>Map: Click preview or expand button
+    Map-->>User: Show full-size interactive map
     User->>App: Select result from list or map
     alt No API key
         App->>App: Load matching sample verification data
@@ -63,16 +65,21 @@ sequenceDiagram
 
 The supported country list is embedded in the page. Without a key, only the included
 sample searches (`tf26rf` and `EC2M 7NH`) return data. With a key, search and
-verification requests are sent directly from the browser to Loqate.
+verification requests are sent directly from the browser to Loqate. The API key
+field is in the search section.
+
+The results map is a compact 165-pixel preview, like the Asset POC. Click the
+preview or expand button to open a full-size interactive map. Result markers can
+be selected from either view; the expanded map also supports panning and zooming.
 
 ## Components
 
 | Component | Responsibility |
 |-----------|----------------|
-| `poc-address-app.html` | Static interface, styles, tab behavior, map setup, sample responses, result selection, and address rendering |
+| `poc-address-app.html` | Static interface, styles, search and API key controls, map setup, sample responses, result selection, and address rendering |
 | `loqate-client.js` | Loqate Find and Verify requests, result-container drill-down, and API error handling |
-| Leaflet | Browser map, result markers, and map interactions |
-| OpenStreetMap | Map tile data and attribution |
+| Leaflet | Compact map preview, result markers, and expanded interactive map |
+| OpenStreetMap | Map tiles and attribution for both map views |
 | Browser `localStorage` | Stores the Loqate key under `loqate_api_key` and theme preference under `poc-address.theme.v1` |
 
 ## Address formatting
