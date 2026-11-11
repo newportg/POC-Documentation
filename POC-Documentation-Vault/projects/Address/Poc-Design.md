@@ -1,7 +1,7 @@
 # POC Address Application Design
 
 This note describes the current Address proof of concept, as published on the
-[reference page](C:/Source/Repos/poc-address/docs/index.html). The implementation
+[documentation page](C:/Source/Repos/poc-address/docs/documentation.html). The implementation
 uses the same browser-native approach as the Asset POC: static HTML, CSS, and
 JavaScript, without a frontend framework or build system.
 
@@ -93,9 +93,10 @@ falls back to the response's `Address` field.
 
 The application is plain browser-native HTML, CSS, and JavaScript. It has no package
 manifest, frontend framework runtime, compile step, or server-side code. Open
-`src/app/poc-address-app.html` directly or serve the files as static assets. The
-GitHub Pages publisher copies the app and client into `docs/app/` and embeds the
-same app in the reference page.
+`src/app/poc-address-app.html` directly or serve the files as static assets. GitHub
+Pages publishes the app as `docs/index.html` and the standards guide as
+`docs/documentation.html`. A copy of the app and client remains under `docs/app/`
+for compatibility with the earlier URL.
 
 ## Security and limitations
 
@@ -108,6 +109,6 @@ same app in the reference page.
 - Map pins and geocodes do not prove postal deliverability, ownership, or legal
   status.
 
-The reference page's UPU S42 content is explanatory; the app delegates live address
+The documentation page's UPU S42 content is explanatory; the app delegates live address
 formatting and verification to Loqate rather than implementing a separate standard
 engine.

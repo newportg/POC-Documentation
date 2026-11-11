@@ -1,7 +1,7 @@
 # UK Address Format
 
 As described by UPU S42 — uses 9 of 15 elements.
-Source: [generated standards page](C:/Source/Repos/poc-address/docs/index.html) (UK Format tab).
+Source: [generated standards page](C:/Source/Repos/poc-address/docs/documentation.html) (UK Format tab).
 
 ## Address Lines
 
