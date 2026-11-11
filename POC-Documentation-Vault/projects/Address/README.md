@@ -6,8 +6,8 @@ as part of this migration.
 Repo: [C:\Source\Repos\poc-address](C:/Source/Repos/poc-address)
 
 This project folder contains Address research and product notes. The standalone
-repository contains the runnable static proof of concept and the target production
-application design.
+repository contains the runnable static proof of concept; its design note describes
+the current browser-native implementation.
 
 ## Documentation
 
@@ -19,5 +19,6 @@ application design.
 - [[UK-Address-Format|UK address format]]
 
 The [app README](C:/Source/Repos/poc-address/README.md) is the setup and validation
-contract. The repository's [design document](C:/Source/Repos/poc-address/docs/design.md)
-describes the intended production application, not the static proof of concept.
+contract. The repository's
+[design document](C:/Source/Repos/poc-address/docs/design.md) describes the current
+static proof of concept, not a planned server application.
