@@ -1,0 +1,571 @@
+/* Copilot Plugin Styles */
+
+/* ── Inline Loading Spinner ─────────────────────────────────────────────────── */
+
+.copilot-loading {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.3em;
+  line-height: 1.5em;
+  vertical-align: text-bottom;
+  margin: -0.3em 0.3em 0;
+}
+
+.copilot-loading::after {
+  display: inline-table;
+  white-space: pre;
+  text-align: left;
+}
+
+.copilot-loading.copilot-dots::after {
+  content: "⠋\A⠙\A⠹\A⠸\A⠼\A⠴\A⠦\A⠧\A⠇\A⠏";
+  animation: copilot-spin10 1s steps(10) infinite;
+}
+
+@keyframes copilot-spin10 {
+  to {
+    transform: translateY(-15em);
+  }
+}
+
+/* ── Streaming Content Preview ──────────────────────────────────────────────── */
+
+.copilot-content {
+  color: var(--text-faint);
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Animate the latest chunk of streamed text */
+.copilot-content > span:last-child {
+  display: inline;
+  background-image: linear-gradient(
+    to right,
+    var(--text-faint) 0%,
+    var(--interactive-accent) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: slice;
+  animation: copilot-stream-reveal var(--anim-duration-fast, 150ms) ease-out;
+}
+
+.copilot-stream-chunk {
+  display: inline;
+  background-image: linear-gradient(
+    to right,
+    var(--text-faint) 0%,
+    var(--interactive-accent) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: slice;
+  animation: copilot-stream-reveal var(--anim-duration-fast, 150ms) ease-out;
+}
+
+@keyframes copilot-stream-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Inline Diff View ──────────────────────────────────────────────────────── */
+
+/* Old text: red tint */
+.copilot-diff-old-text {
+  background-color: rgba(255, 0, 0, 0.08);
+  color: var(--text-error);
+  border-radius: 2px;
+}
+
+/* Diff review wrapper (new text + toolbar) */
+.copilot-diff-review {
+  animation: copilot-diff-reveal 300ms ease-out;
+}
+
+/* New text: green highlighted block */
+.copilot-diff-new-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background-color: rgba(0, 180, 0, 0.08);
+  color: var(--text-success, #4caf50);
+  border-left: 3px solid var(--text-success, #4caf50);
+  padding: 4px 8px;
+  margin: 4px 0;
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+}
+
+@keyframes copilot-diff-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Inline diff toolbar (Keep/Undo) — flows with content */
+.copilot-diff-toolbar {
+  display: flex;
+  gap: var(--size-4-2);
+  padding: var(--size-2-2) 0;
+}
+
+.copilot-diff-toolbar-btn {
+  padding: var(--size-2-1) var(--size-4-3);
+  font-size: var(--font-ui-small);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  font-weight: var(--font-semibold);
+  transition: all var(--anim-duration-fast);
+}
+
+.copilot-diff-toolbar-btn.copilot-diff-keep {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+}
+
+.copilot-diff-toolbar-btn.copilot-diff-keep:hover {
+  background: var(--interactive-accent-hover);
+  border-color: var(--interactive-accent-hover);
+}
+
+.copilot-diff-toolbar-btn.copilot-diff-undo {
+  background: var(--background-primary-alt);
+  color: var(--text-muted);
+}
+
+.copilot-diff-toolbar-btn.copilot-diff-undo:hover {
+  background: var(--background-modifier-border-hover);
+  color: var(--text-normal);
+}
+
+.copilot-diff-shortcut {
+  font-size: var(--font-ui-smaller);
+  color: var(--text-faint);
+  margin-left: var(--size-2-1);
+  opacity: 0.7;
+}
+
+.copilot-diff-keep .copilot-diff-shortcut {
+  color: var(--text-on-accent);
+  opacity: 0.6;
+}
+
+/* ── Model Selector (shared) ───────────────────────────────────────────────── */
+
+.copilot-model-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--background-primary-alt);
+  color: var(--text-faint);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  padding: 2px 20px 2px 6px;
+  font-size: var(--font-ui-smaller);
+  font-family: var(--font-interface);
+  cursor: pointer;
+  transition: border-color var(--anim-duration-fast), color var(--anim-duration-fast);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 5px center;
+  max-width: 160px;
+  text-overflow: ellipsis;
+}
+
+.copilot-model-select:hover {
+  color: var(--text-muted);
+  border-color: var(--background-modifier-border-hover);
+}
+
+.copilot-model-select:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+  color: var(--text-normal);
+}
+
+/* Chat: model selector row below input */
+.copilot-chat-model-row {
+  display: flex;
+  align-items: center;
+}
+
+/* Inline edit: model selector sits alongside mode buttons, right-aligned */
+.copilot-inline-edit-mode-row .copilot-model-select {
+  margin-left: auto;
+}
+
+/* ── Inline Edit Popup ─────────────────────────────────────────────────────── */
+
+.copilot-inline-edit-popup {
+  position: fixed;
+  bottom: var(--copilot-inline-edit-bottom);
+  left: var(--copilot-inline-edit-left);
+  transform: translateX(-50%);
+  z-index: var(--layer-menu);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4-1);
+  padding: var(--size-4-2);
+  background: var(--background-primary);
+  border: 1px solid var(--interactive-accent);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-s);
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.copilot-inline-edit-row {
+  display: flex;
+  gap: var(--size-4-2);
+}
+
+.copilot-inline-edit-input {
+  flex: 1;
+  background: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  padding: var(--size-4-1) var(--size-4-2);
+  color: var(--text-normal);
+  font-family: var(--font-interface);
+  font-size: var(--font-ui-small);
+}
+
+.copilot-inline-edit-input:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+}
+
+.copilot-inline-edit-submit {
+  padding: var(--size-4-1) var(--size-4-3);
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  font-size: var(--font-ui-small);
+  font-weight: var(--font-semibold);
+  transition: background-color var(--anim-duration-fast);
+}
+
+.copilot-inline-edit-submit:hover {
+  background: var(--interactive-accent-hover);
+}
+
+.copilot-inline-edit-mode-row {
+  display: flex;
+  gap: var(--size-2-1);
+  align-items: center;
+}
+
+.copilot-inline-edit-mode-btn {
+  padding: var(--size-2-1) var(--size-4-2);
+  font-size: var(--font-ui-smaller);
+  background: var(--background-primary-alt);
+  color: var(--text-muted);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: all var(--anim-duration-fast);
+}
+
+.copilot-inline-edit-mode-btn:hover {
+  color: var(--text-normal);
+  border-color: var(--background-modifier-border-focus);
+}
+
+.copilot-inline-edit-mode-btn.is-active {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+}
+
+/* Settings page action blocks */
+.copilot-action-block {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.copilot-action-delete {
+  color: var(--text-error);
+}
+
+.copilot-textarea-full-width {
+  width: 100%;
+}
+
+/* ── Chat View ──────────────────────────────────────────────────────────── */
+
+.copilot-chat-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--background-primary);
+}
+
+/* Toolbar */
+.copilot-chat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--size-4-2);
+  padding: var(--size-4-2);
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+}
+
+.copilot-chat-context {
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+  flex: 1;
+  text-align: center;
+}
+
+/* Messages Container */
+.copilot-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--size-4-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4-3);
+  background: var(--background-primary);
+}
+
+/* Message Bubbles */
+.copilot-message {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+  padding: var(--size-4-2) var(--size-4-3);
+  border-radius: var(--radius-m);
+  word-wrap: break-word;
+  animation: copilot-message-in var(--anim-duration-fast, 150ms) ease-out;
+}
+
+.copilot-message.user {
+  align-self: flex-end;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-radius: var(--radius-m) var(--radius-m) 0 var(--radius-m);
+}
+
+.copilot-message.assistant {
+  align-self: flex-start;
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m) var(--radius-m) var(--radius-m) 0;
+}
+
+.copilot-message-streaming {
+  opacity: 0.8;
+}
+
+.copilot-message-content {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.copilot-message-content p {
+  margin: 0.5em 0;
+}
+
+.copilot-message-content p:first-child {
+  margin-top: 0;
+}
+
+.copilot-message-content p:last-child {
+  margin-bottom: 0;
+}
+
+.copilot-message-content pre {
+  margin: 0.5em 0;
+  padding: var(--size-4-2);
+  background: var(--background-primary-alt);
+  border-radius: var(--radius-s);
+  overflow-x: auto;
+}
+
+.copilot-message-content code {
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+}
+
+.copilot-message-timestamp {
+  font-size: var(--font-ui-smaller);
+  color: var(--text-faint);
+  margin-top: var(--size-2-2);
+  opacity: 0;
+  transition: opacity var(--anim-duration-fast);
+}
+
+.copilot-message:hover .copilot-message-timestamp {
+  opacity: 1;
+}
+
+.copilot-message-actions {
+  display: flex;
+  gap: var(--size-2-2);
+  margin-top: var(--size-4-2);
+  opacity: 0;
+  transition: opacity var(--anim-duration-fast);
+}
+
+.copilot-message:hover .copilot-message-actions {
+  opacity: 1;
+}
+
+.copilot-message-action-btn {
+  padding: var(--size-2-1) var(--size-4-2);
+  font-size: var(--font-ui-smaller);
+  background: var(--background-modifier-border-hover);
+  color: var(--text-muted);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  transition: all var(--anim-duration-fast);
+}
+
+.copilot-message-action-btn:hover {
+  background: var(--background-modifier-border-focus);
+  color: var(--text-normal);
+  border-color: var(--background-modifier-border-focus);
+}
+
+.copilot-message-action-btn.mod-cta {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+}
+
+.copilot-message-action-btn.mod-cta:hover {
+  background: var(--interactive-accent-hover);
+  border-color: var(--interactive-accent-hover);
+}
+
+/* Input Container */
+.copilot-chat-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4-2);
+  padding: var(--size-4-2);
+  border-top: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+}
+
+.copilot-chat-input-row {
+  display: flex;
+  gap: var(--size-4-2);
+  align-items: stretch;
+}
+
+.copilot-chat-selection-context {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--size-4-1);
+  padding: var(--size-2-2) var(--size-4-2);
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+}
+
+.copilot-chat-selection-context.is-hidden {
+  display: none;
+}
+
+.copilot-chat-selection-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copilot-chat-selection-dismiss {
+  cursor: pointer;
+  color: var(--text-faint);
+  font-size: var(--font-ui-medium);
+  line-height: 1;
+  padding: 0 var(--size-2-1);
+  border-radius: var(--radius-s);
+  transition: color var(--anim-duration-fast);
+}
+
+.copilot-chat-selection-dismiss:hover {
+  color: var(--text-normal);
+}
+
+.copilot-chat-attach {
+  padding: var(--size-4-1) var(--size-4-2);
+  font-size: var(--font-ui-medium);
+  cursor: pointer;
+}
+
+.copilot-chat-input {
+  flex: 1;
+  height: var(--copilot-chat-input-height, auto);
+  background: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  padding: var(--size-4-2);
+  color: var(--text-normal);
+  font-family: var(--font-interface);
+  font-size: var(--font-ui-medium);
+  resize: none;
+  min-height: 40px;
+  max-height: 200px;
+  overflow-y: auto;
+  transition: border-color var(--anim-duration-fast);
+}
+
+.copilot-chat-input:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+}
+
+.copilot-chat-send {
+  padding: 0 var(--size-4-4);
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border: none;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  font-weight: var(--font-semibold);
+  transition: background-color var(--anim-duration-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copilot-chat-send:hover {
+  background: var(--interactive-accent-hover);
+}
+
+.copilot-chat-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes copilot-message-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

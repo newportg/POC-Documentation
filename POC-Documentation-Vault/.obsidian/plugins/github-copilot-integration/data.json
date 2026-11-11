@@ -1,0 +1,170 @@
+{
+  "actions": [
+    {
+      "name": "General help",
+      "icon": "🪄",
+      "system": "You are an assistant helping a user write more content in a document based on a prompt. Output in Markdown.",
+      "prompt": "Act as a professional editor with many years of experience as a writer. Carefully finalize the following text, and improve it for readability and flow.",
+      "replaceSelection": true,
+      "model": "auto"
+    },
+    {
+      "name": "Continue writing",
+      "icon": "✍️",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Continue writing the following text naturally, maintaining the same tone and style.",
+      "replaceSelection": false
+    },
+    {
+      "name": "Summarize",
+      "icon": "🍭",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Make a concise summary of the key points of the following text.",
+      "replaceSelection": false
+    },
+    {
+      "name": "Fix spelling and grammar",
+      "icon": "📖",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Proofread the below for spelling and grammar. Return only the corrected text.",
+      "replaceSelection": true
+    },
+    {
+      "name": "Find action items",
+      "icon": "✅",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Act as an assistant helping find action items inside a document. An action item is an extracted task or to-do found in the text. Format each item as a Markdown checkbox: - [ ] item text",
+      "replaceSelection": false
+    },
+    {
+      "name": "Rewrite selection",
+      "icon": "🔄",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Rewrite the following text to improve clarity, grammar, and style. Return only the rewritten text.",
+      "replaceSelection": true
+    },
+    {
+      "name": "Generate code",
+      "icon": "💻",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "Based on the following text, generate code that accomplishes what is described. Wrap all code output in a fenced Markdown code block with the appropriate language identifier. Only output the code block, no additional explanation.",
+      "replaceSelection": false
+    },
+    {
+      "name": "Plan",
+      "icon": "🧠",
+      "system": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "prompt": "You are a top-tier DevOps engineer about to embark on a new project. Based on the provided information given to you, generate a highly detailed spec on how to accomplish this project.",
+      "replaceSelection": false
+    }
+  ],
+  "defaultModel": "auto",
+  "cliPathOverride": false,
+  "cliPath": "",
+  "chatSettings": {
+    "threads": [
+      {
+        "id": "1794396133596",
+        "messages": [
+          {
+            "id": "1794396143199",
+            "role": "user",
+            "content": "hello is this working",
+            "timestamp": 1794396143199
+          },
+          {
+            "id": "1794396143200",
+            "role": "assistant",
+            "content": "Yes, it’s working. I can see the document you shared.",
+            "timestamp": 1794396143199,
+            "streaming": false
+          },
+          {
+            "id": "1794396154104",
+            "role": "user",
+            "content": "yea",
+            "timestamp": 1794396154104
+          },
+          {
+            "id": "1794396154105",
+            "role": "assistant",
+            "content": "Great!",
+            "timestamp": 1794396154104,
+            "streaming": false
+          },
+          {
+            "id": "1794396333080",
+            "role": "user",
+            "content": "I have a problem. the current document lays out how documentation and poc apps should be held in separate repos. The problem is that the repo is no longer aligned with the documentation, and as they are two separate repos, it requires me to have two editors open. is there a better solution",
+            "timestamp": 1794396333080
+          },
+          {
+            "id": "1794396333081",
+            "role": "assistant",
+            "content": "Yes. Separate repositories don’t have to mean separate editor windows. Open the vault and app repo together in a **multi-root VS Code workspace**; each keeps its own Git history, but you can edit and search both in one window.\n\nFor alignment, keep build truth—design docs, API contracts, runbooks, ADRs—in the app repo alongside the code, and keep the vault for research and project notes with links to those docs. If a document and code must be reviewed or committed atomically, they need to be in the same repo; merging the entire knowledge vault with the app is usually unnecessary.",
+            "timestamp": 1794396333080,
+            "streaming": false
+          },
+          {
+            "id": "1794396434150",
+            "role": "user",
+            "content": "how do i configure a multi root vs code workspace",
+            "timestamp": 1794396434150
+          },
+          {
+            "id": "1794396434151",
+            "role": "assistant",
+            "content": "In VS Code:\n\n1. Open the vault folder.\n2. Choose **File → Add Folder to Workspace…** and select the app repo.\n3. Choose **File → Save Workspace As…**. Save the `.code-workspace` file somewhere outside both repos, such as `C:\\Source\\Workspaces\\thirdfort.code-workspace`.\n4. Next time, open that workspace file to get both folders in one VS Code window.\n\nYou can also create the workspace file yourself:\n\n```json\n{\n  \"folders\": [\n    { \"name\": \"Vault\", \"path\": \"C:\\\\Source\\\\Obsidian\\\\Projects\\\\YourVault\" },\n    { \"name\": \"App\", \"path\": \"C:\\\\Source\\\\Repos\\\\YourApp\" }\n  ]\n}\n```\n\nReplace the example paths with your actual folders. Each folder remains its own Git repository; the workspace just lets you work with both in one window.",
+            "timestamp": 1794396434150,
+            "streaming": false
+          },
+          {
+            "id": "1794396793327",
+            "role": "user",
+            "content": "ok, but my documentation is normally written using obsidian",
+            "timestamp": 1794396793327
+          },
+          {
+            "id": "1794396793328",
+            "role": "assistant",
+            "content": "That’s important—the VS Code workspace only helps if you’re willing to write docs in VS Code. You don’t have to: **Obsidian can open an existing folder as a vault**, so you can open the app repo and edit its `docs/` there. Those files stay in the app repo and are versioned with the code.\n\nI’d keep the main vault for research and project notes, and use the app repo as an Obsidian vault for build docs like ADRs and runbooks. That means switching vaults in Obsidian, but avoids duplicate documentation or fragile folder links. If you need all notes and app docs in one Obsidian vault, that’s a reason to reconsider the repository boundary—not just the editor setup.",
+            "timestamp": 1794396793327,
+            "streaming": false
+          },
+          {
+            "id": "1794397106335",
+            "role": "user",
+            "content": "so do you agree with the content of the current page",
+            "timestamp": 1794397106335
+          },
+          {
+            "id": "1794397106336",
+            "role": "assistant",
+            "content": "**I agree with the core principle, but not every detail as written.** Keeping project knowledge separate from deployable code is sensible, and code-dependent docs should live with the code. That’s compatible with Obsidian: you can open the app repo as an Obsidian vault and edit its `docs/` there.\n\nI’d clarify two things before treating this as the standard:\n\n- The examples put `decisions.md` and “key decisions” in the vault, while later sections say decisions belong in repo ADRs. Keep discovery and rejected options in the vault; link to the ADR for the actual decision.\n- The page doesn’t describe the Obsidian workflow. If you need all project notes and app docs in one Obsidian vault, the separate-repo model won’t provide that seamlessly. If switching between vaults is acceptable, document that workflow explicitly.\n\nSo: sound foundation, but resolve those inconsistencies and decide whether one-vault Obsidian use is a requirement.",
+            "timestamp": 1794397106335,
+            "streaming": false
+          },
+          {
+            "id": "1794397218056",
+            "role": "user",
+            "content": "can you correct the document",
+            "timestamp": 1794397218056
+          },
+          {
+            "id": "1794397218057",
+            "role": "assistant",
+            "content": "Here’s a revised version that resolves the “decisions” ambiguity and makes the Obsidian workflow—and its tradeoffs—explicit.\n\n````markdown\n# Application project organisation\n\nA standard shape for application projects: keep the knowledge vault (research, context, and exploration) separate from application repositories (code, infrastructure, and documentation that must evolve with the code). Each side points to the other; neither keeps a second copy of the other’s content.\n\nThis is the target structure for the vault’s `/projects/<name>/` folders. [[cdd-poc-app]] is an example of the arrangement this replaces: application code living inside the vault.\n\n## Why the current setup feels disorganised\n\nObserved across the existing POC-* vaults:\n\n- **One vault per project, duplicated boilerplate.** Each vault carries its own `AGENTS.md`, `CLAUDE.md`, `prompts/translate.md`, and `copilot/skills/` tree. Nothing is shared, so conventions drift.\n- **Mixed concerns.** POC-Thirdfort has app code (`POC/lib/`, tests, HTML wizards) alongside wiki notes. Code and knowledge have different lifecycles and tools; interleaving them makes both harder to manage.\n- **Flat wiki folders don't scale.** POC-Enterprise has 47+ files in one directory—SODs, vendor POCs, Entra ID configs, and architecture notes side by side.\n- **Inconsistent shape per project.** POC-Thirdfort has `wiki/ + POC/`, POC-NorthstarData has only `wiki/`, and POC-poc is an empty template. There is no consistent structure to return to.\n- The POC-poc template (`/projects/<name>/` with a README per project) is the right starting point, but was never rolled out.\n\n## Layer 1 — one knowledge vault\n\nOne vault for shared knowledge, with one folder per project and shared boilerplate at the root:\n\n```text\nvault/\n├── README.md\n├── AGENTS.md\n├── raw/\n├── archive/\n├── prompts/\n└── projects/\n    ├── thirdfort/\n    │   ├── README.md\n    │   ├── api-research.md\n    │   ├── domain-exploration.md\n    │   └── open-questions.md\n    ├── enterprise/\n    │   └── ...\n    └── northstar-data/\n        └── ...\n```\n\nRules:\n\n- Use one folder per project; nest by topic once a project has roughly 10 notes.\n- Keep shared boilerplate (`AGENTS.md`, skills, prompts) at the vault root.\n- Make the project README the index: status, repo link, links to relevant research and repo-owned decisions, and last-updated date. Summarize context there, but link to ADRs rather than copying their decisions.\n\n### Vault folders and workflow\n\nThe vault root README is a brief entry point. This document defines the structure and workflow; [[projects]] is the index linking to each project README.\n\n- `/raw` — capture inbox for notes, PDFs, screenshots, and links.\n- `/wiki` — organized notes and navigation pages, including the project index.\n- `/projects/<name>/` — active project research and engagement notes.\n- `/archive` — processed raw material retained as a permanent record.\n- `/prompts` — shared prompts used by vault workflows.\n\nFor the capture-to-wiki workflow, add material to `/raw`, process it using [[prompts/translate]], update the relevant wiki or project notes, then move processed material to `/archive`. Follow the vault rules in `AGENTS.md`: preserve raw and archived material, and read and merge an existing wiki entry rather than overwriting it. The vault is version-controlled so changes remain reviewable.\n\n## Layer 2 — one application repo per deployable thing\n\nUse the same basic shape for a throwaway POC and production; POCs simply have thinner content:\n\n```text\nrepo/\n├── README.md\n├── docs/\n│   ├── design.md\n│   ├── adr/\n│   ├── prd.md\n│   └── runbook.md\n├── src/\n├── tests/\n├── infra/\n├── config/\n├── .github/workflows/\n└── .gitignore\n```\n\nConventions that matter most:\n\n- **README is the contract:** purpose, prerequisites, how to run it, and a link to the vault project folder. Aim for a fresh clone to run in under five minutes.\n- **Docs-as-code:** design docs, API contracts, runbooks, ratified PRDs, and ADRs live in the repo and are versioned with the code. The vault holds research and engagement context; the repo holds the current product requirements and build truth.\n- **ADRs are lightweight records:** one file per significant decision, such as `docs/adr/0001-use-entra-id.md`, covering context, options, choice, and consequences.\n- **Keep `infra/` separate from `src/`:** this makes infrastructure-as-code reviewable and POCs easier to reproduce.\n- **One repo per deployable thing:** don't merge unrelated POCs into a monorepo or split one deployable POC across several repos.\n\n## Writing repo documentation in Obsidian\n\nRepo-owned documentation is still Markdown, so it can be written in Obsidian. Open the application repo folder as an Obsidian vault and edit its `docs/` there; the files remain in the application repo and are versioned with the code. If using Obsidian settings or plugins in that repo, decide deliberately which shared configuration belongs in Git and keep machine-specific workspace state out.\n\nThe main knowledge vault and an application repo are separate Obsidian vaults. You can switch between them in Obsidian or open them in separate Obsidian windows. Obsidian does not combine independent folders into one vault view. If having all notes and repo documentation in a single Obsidian file tree is essential, this separate-vault arrangement may not fit; don't solve that by copying repo documentation into the knowledge vault, since that creates two sources of truth.\n\n## Repo topology — where the code lives\n\nThe standard topology is **N+1**: one Git repo for the knowledge vault, plus one repo outside it for each deployable thing.\n\n```text\nC:\\Source\\\n├── Obsidian\\Projects\\<vault>\\    ← vault Git repo\n│   └── projects\\<name>\\          → pointer to repo\n└── Repos\\<app>\\                  ← app Git repo\n```\n\n- **Not one repo for all projects.** Unrelated POCs have independent lifecycles, CI, audiences, and clone histories. Partition repos by **what ships together**; partition vault folders by **what you think about together**. Those boundaries need not match.\n- **Use a monorepo only when things genuinely ship together.** For example, a CDD wizard and its API client belong together if they are tested and deployed as one. A separately deployed API is a separate repo.\n- **Vault folder ↔ repo is not always 1:1:** 1:1 is the norm; 1:0 for notes-only work (such as POC-Enterprise, where most SOD notes have no code); and 1:N when an engagement has several deployables.\n- Keep application code out of the vault. `POC-Thirdfort-Vault\\POC\\` is the anti-pattern this structure replaces.\n\n## The seam\n\nUse one pointer each way; don't duplicate content:\n\n- Vault project README: `Repo: <URL> | Status: <status and date>`\n- Repo README: a link to the vault project folder, such as `Knowledge notes: <vault project URL or agreed local link>`\n\nArchive a POC by marking its status in the vault README and making the repo read-only when appropriate. Do not move code into the vault.\n\n## Documentation ownership\n\nEach document has one home. Use this test: *Would a change to the running product or its supported behavior require this document to change?* If so, it belongs in `repo/docs/`. *Does it change because research, engagement context, or understanding changed?* If so, it belongs in the vault.\n\n| Content | Home |\n|---|---|\n| Architecture as built, API contract, runbook, ADRs, ratified PRD | `repo/docs/` |\n| Research, vendor facts, domain exploration, rejected discovery options, meeting notes | `vault/projects/<name>/` |\n| External artifacts (SODs, PDFs, screenshots) | `vault/archive/` |\n| Status, repo link, project index, links to repo decisions | Vault project README |\n\nA domain model in the vault is exploratory; the implemented model or API contract belongs in the repo. Exploration may lead to a decision, which is recorded once as an ADR in the repo. The vault links to that ADR rather than restating the decision. The repo links back to the vault for engagement context.\n\nOne or two low-churn sentences describing the project may appear in both READMEs. Beyond that, link to the other source rather than copying it.\n\n## PRDs\n\nA PRD is normative: it says what should be built.\n\n- **Draft:** Keep it in `vault/projects/<name>/`, dated like other thinking notes, while it is being discussed and negotiated.\n- **Ratified:** Move it—not copy it—to `repo/docs/prd.md`. It is now the contract for the product. Map acceptance criteria to tests or another explicit verification method; changes to requirements should update the PRD.\n- **Superseded:** Keep prior versions in Git history. Record a deliberate scope change in an ADR; keep the discovery context in the vault and link to that ADR.\n\nAfter ratification, the vault keeps discovery material and a `PRD: <repo link>` pointer, not an editable copy. If stakeholders edit the PRD outside Git (for example, in Word or SharePoint), treat the signed file as the artifact and archive it like an SOD; do not keep a competing working copy. Notes-only engagements with no repo keep their PRD in the vault.\n\nFor POCs, keep the PRD short: problem, success criteria, and non-goals. State how each criterion will be verified—by test, demo, inspection, or another suitable method—so the hypothesis can be meaningfully evaluated.\n\n## Drift\n\nStructure reduces drift but cannot eliminate it. The aim is one source of truth per fact and visible checks where the two layers meet:\n\n- **Link rather than restate.** Every copied fact is a potential drift site.\n- **Review repo docs with behavior changes.** When a code change affects documented behavior, the PR should update the relevant docs or explain why no update is needed. Use tests, contract checks, and CI to verify specific claims; a README or PR checklist alone does not guarantee documentation stays current.\n- **Keep ADRs append-only.** Supersede a decision with a new ADR (for example, `0002 supersedes 0001`) rather than silently rewriting its history.\n- **Date vault research.** Notes are records of what was understood at a point in time, not current build truth. Include capture date, source, and open questions for facts that may change, such as vendor API behavior.\n- **Show project freshness.** Keep status and last-updated on the project README.\n- **Archive deliberately.** Mark the project archived in the vault and make the corresponding repo read-only when appropriate.\n\nThis structure cannot prevent an initially incorrect note, an unnoticed upstream change, or failures to follow review and CI practices. It makes ownership clearer and drift easier to detect; it does not replace those practices.\n\n## Migration steps\n\n1. Keep one shared vault and populate `projects/<name>/` for each project. Retire duplicated per-vault boilerplate as projects are absorbed.\n2. Move application code out of vault `POC/` folders into standalone repos. Keep code and build-truth docs together in each repo.\n3. Adopt `docs/ + src/ + infra/` where appropriate, even for throwaway POCs, so they are reviewable and reproducible.\n4. For repo-owned Markdown, use Obsidian by opening the app repo as a vault. Keep vault research and repo documentation separate; link between them rather than copying.\n````\n",
+            "timestamp": 1794397218056,
+            "streaming": false
+          }
+        ],
+        "model": "auto",
+        "created": 1794396133596,
+        "updated": 1794397266131
+      }
+    ],
+    "currentThreadId": "1794396133596",
+    "defaultChatModel": "auto",
+    "autoIncludeContext": true
+  }
+}

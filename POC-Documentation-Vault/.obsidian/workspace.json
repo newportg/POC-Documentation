@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projects/Asset/asset-prd.md",
-                "mode": "preview",
+                "file": "wiki/application-project-organisation.md",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "asset-prd"
+              "title": "application-project-organisation"
             }
           }
         ]
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "projects/Address/README.md",
+                "file": "wiki/application-project-organisation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -171,13 +171,13 @@
             }
           },
           {
-            "id": "8af97f161e0db8df",
+            "id": "2622b2bc3cff6620",
             "type": "leaf",
             "state": {
-              "type": "copilot-agent-chat-view",
+              "type": "copilot-chat",
               "state": {},
-              "icon": "copilot-agent",
-              "title": "Copilot Agent Chat"
+              "icon": "message-square",
+              "title": "Copilot Chat"
             }
           }
         ],
@@ -185,7 +185,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 708.833251953125
+    "width": 761.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,46 +198,47 @@
       "bases:Create new base": false,
       "copilot:Open Copilot Agent Chat": false,
       "obsidian-git:Open Git source control": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "github-copilot-integration:Open Copilot Chat": false
     }
   },
   "active": "d82d385fb03a7c23",
   "lastOpenFiles": [
-    "projects/Asset/README.md",
+    "copilot/copilot-conversations/agent__is_this_working@20261111_110811.md",
+    "wiki/projects.md",
+    "README.md",
+    "wiki/application-project-organisation.md",
+    "copilot/copilot-conversations/agent__is_this_working@20261111_105006.md",
+    "projects/Party/README.md",
+    "projects/Party/individual-model.md",
+    "projects/Party/company-model.md",
+    "projects/Party/party-prd.md",
+    "copilot/skills/json-canvas/SKILL.md",
+    "copilot/skills/json-canvas/LICENSE",
+    "copilot/skills/json-canvas/references/EXAMPLES.md",
+    "copilot/skills/json-canvas/references",
+    "copilot/skills/json-canvas",
+    "copilot/skills/obsidian-bases/SKILL.md",
+    "copilot/skills/obsidian-bases/LICENSE",
+    "copilot/skills/obsidian-bases/references/EXAMPLES.md",
+    "copilot/skills/obsidian-bases/references/FUNCTIONS_REFERENCE.md",
+    "copilot/skills/obsidian-bases/references",
+    "copilot/skills/obsidian-bases",
+    "copilot/skills/obsidian-markdown/SKILL.md",
+    "copilot/skills/obsidian-markdown/LICENSE",
+    "copilot/skills/obsidian-markdown/references/PROPERTIES.md",
+    "copilot/skills/obsidian-markdown/references/EMBEDS.md",
+    "copilot/skills/obsidian-markdown/references/CALLOUTS.md",
+    "copilot/skills/obsidian-markdown/references",
+    "copilot/skills/obsidian-markdown",
+    "copilot/copilot-conversations/agent__what_i_thought_would_happen,_has_happened._the_repo_project@20261111_102846.md",
     "projects/Asset/asset-prd.md",
+    "projects/Instruction/graph.md",
+    "projects/Asset/README.md",
     "projects/Instruction/instruction-prd.md",
     "projects/WIP/WIP-process-prd.md",
     "projects/Instruction/README.md",
     "projects/WIP/README.md",
-    "projects/WIP/euro-wip-entity-model.md",
-    "projects/WIP/euro-property-transaction-wip-process.md",
-    "projects/Party/individual-model.md",
-    "projects/Party/party-prd.md",
-    "projects/Party/README.md",
-    "projects/Party/company-model.md",
-    "copilot/copilot-conversations/agent__how_does_the_company-model_differ_from_what_is_return_by@20261105_122936.md",
-    "projects/Address/README.md",
-    "projects/Address/Overview.md",
-    "projects/Address/UPU-S42.md",
-    "projects/Address/UK-Address-Format.md",
-    "projects/Address/Poc-Design.md",
-    "projects/Address/Loqate-api.md",
-    "projects/Address/ISO-20022.md",
-    "wiki/projects.md",
-    "projects/Address/uk-address-format.md",
-    "_site/projects/Address/wiki/UPU-S42.html",
-    "_site/projects/Address/wiki/UK-Address-Format.html",
-    "_site/projects/Address/wiki/Poc-Design.html",
-    "_site/projects/Address/wiki/Overview.html",
-    "_site/projects/Address/wiki/Loqate-api.html",
-    "_site/projects/Address/wiki/ISO-20022.html",
-    "_site/projects/Address/wiki",
-    "projects/Address/wiki/UPU-S42.md",
-    "projects/Address/wiki/UK-Address-Format.md",
-    "projects/Address/wiki/Poc-Design.md",
-    "projects/Address/wiki/Overview.md",
-    "projects/Address/wiki",
-    "_site/wiki/projects.html",
-    "_site/wiki/application-project-organisation.html"
+    "_site/projects/Address/wiki/UPU-S42.html"
   ]
 }
