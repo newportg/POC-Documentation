@@ -11,6 +11,9 @@
     },
     {
       "path": "../../../Repos/poc-address"
+    },
+    {
+      "path": "../../../Repos/poc-instruction"
     }
   ],
   "settings": {
