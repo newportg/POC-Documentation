@@ -11,6 +11,7 @@ on:
       - 'POC-Documentation-Vault/requirements-pages.txt'
       - 'mkdocs.yml'
       - 'POC-Documentation-Vault/stylesheets/**'
+      - 'POC-Documentation-Vault/javascripts/**'
       - 'mkdocs_hooks.py'
       - '.github/workflows/publish-pages.yml'
   workflow_dispatch:

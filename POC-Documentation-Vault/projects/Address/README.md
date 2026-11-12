@@ -3,7 +3,7 @@
 Status: Browser and API proof of concept. Live Loqate transport has not been verified
 as part of this migration.
 
-Repo: [C:\Source\Repos\poc-address](C:/Source/Repos/poc-address)
+Repo: [POC Address](https://newportg.github.io/poc-address/)
 
 This project folder contains Address research and product notes. The standalone
 repository contains the runnable static proof of concept; its design note describes
@@ -19,7 +19,7 @@ the current browser-native implementation.
 - [[ISO-20022|ISO 20022 address schema]]
 - [[UK-Address-Format|UK address format]]
 
-The [app README](C:/Source/Repos/poc-address/README.md) is the setup and validation
+The [app documentation](https://newportg.github.io/poc-address/) is the setup and validation
 contract. The repository's
-[design document](C:/Source/Repos/poc-address/docs/design.md) describes the current
+[design documentation](https://newportg.github.io/poc-address/documentation.html) describes the current
 static proof of concept, not a planned server application.

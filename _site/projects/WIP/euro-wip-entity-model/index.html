@@ -1917,7 +1917,7 @@ separate fee components, properties, or recurring reporting periods. The WIP rec
 keeps selected instruction context alongside its own financial and lifecycle data so
 finance can report without reconstructing every relationship.</p>
 <h2 id="relationship-view">Relationship view</h2>
-<div class="highlight"><pre><span></span><code>erDiagram
+<pre class="mermaid"><code>erDiagram
     INSTRUCTION ||--o{ WIP_RECORD : "has reporting and fee lines"
     FEE_SCHEDULE o|--o{ WIP_RECORD : "may provide fee basis"
     PROPERTY o|--o{ WIP_RECORD : "may identify property"
@@ -1962,8 +1962,7 @@ finance can report without reconstructing every relationship.</p>
     CURRENCY {
         id currencyId PK
         string currencyCode
-    }
-</code></pre></div>
+    }</code></pre>
 <p>The optional links shown are logical links from the source model. The exact cardinality
 and mandatory rules for every lookup should be confirmed against the final implementation
 schema.</p>
@@ -2173,6 +2172,10 @@ descriptive, not a replacement for an approved physical schema.</p>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
       
     
   </body>

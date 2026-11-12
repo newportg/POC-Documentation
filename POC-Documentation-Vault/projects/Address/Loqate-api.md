@@ -1,7 +1,7 @@
 # LOQATE API Integration
 
 Reference implementation for address verification.
-Source: [generated standards page](C:/Source/Repos/poc-address/docs/documentation.html) (LOQATE API tab).
+Source: [generated standards page](https://newportg.github.io/poc-address/documentation.html) (LOQATE API tab).
 
 ## Find API (Interactive Search)
 

@@ -2434,12 +2434,11 @@ no rate-limit contract and no replay. Every team building directly inherits all 
 </tbody>
 </table>
 <h2 id="the-process">The process</h2>
-<div class="highlight"><pre><span></span><code>flowchart LR
+<pre class="mermaid"><code>flowchart LR
     P1["1&lt;br/&gt;Intake"] --&gt; P2["2&lt;br/&gt;Plan"] --&gt; P3["3&lt;br/&gt;Dispatch"] --&gt; P4["4&lt;br/&gt;Engage"]
     P4 --&gt; P5["5&lt;br/&gt;Observe"] --&gt; P6["6&lt;br/&gt;Assess"] --&gt; P7["7&lt;br/&gt;Decide"]
     P7 --&gt; P8["8&lt;br/&gt;Retain&lt;br/&gt;and monitor"]
-    P8 -. "new finding" .-&gt; P6
-</code></pre></div>
+    P8 -. "new finding" .-&gt; P6</code></pre>
 <table>
 <thead>
 <tr>
@@ -3186,6 +3185,10 @@ the provider status is treated as an input, never an outcome.</p>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
       
     
   </body>

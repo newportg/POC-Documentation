@@ -4,7 +4,7 @@
 Status: Static browser POC; demo data is stored locally in the browser, with
 optional live address lookup through the POC Address API.
 
-Repo: `C:\Source\Repos\poc-asset`
+Repo: [POC Asset](https://newportg.github.io/poc-asset/)
 
 The standalone repository contains the runnable Asset app and its implementation
 documentation. This folder holds discovery notes and the draft requirements.
@@ -21,7 +21,7 @@ app demonstrates a subset using sample data.
 ## Application documentation
 
 The runnable app, run instructions, and implementation design are in
-`C:\Source\Repos\poc-asset`. Start with that repository's README.
+Start with the [published app documentation](https://newportg.github.io/poc-asset/).
 
 ## Architecture
 

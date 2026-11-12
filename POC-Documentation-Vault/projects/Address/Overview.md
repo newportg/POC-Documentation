@@ -1,7 +1,7 @@
 # International Addressing Standards — Overview
 
 Comparison of UPU S42 and ISO 20022 for global address management.
-Source: [generated standards page](C:/Source/Repos/poc-address/docs/documentation.html).
+Source: [generated standards page](https://newportg.github.io/poc-address/documentation.html).
 
 ## Two Standards, Two Purposes
 

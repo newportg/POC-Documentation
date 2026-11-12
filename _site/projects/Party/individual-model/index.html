@@ -1970,7 +1970,7 @@ the person's role in a matter, their relationship to a company or group, their
 authority to act, or the outcome of an identity or compliance check. Those facts
 belong to separately modeled relationships or processes.</p>
 <h2 id="relationship-to-party">Relationship to Party</h2>
-<div class="highlight"><pre><span></span><code>classDiagram
+<pre class="mermaid"><code>classDiagram
     class Party {
         partyId
         type
@@ -1999,8 +1999,7 @@ belong to separately modeled relationships or processes.</p>
     }
     Party &lt;|-- Individual
     Individual "0..*" -- "0..*" GroupMembership : member of
-    Individual "0..*" -- "0..*" Participation : participates in
-</code></pre></div>
+    Individual "0..*" -- "0..*" Participation : participates in</code></pre>
 <p>This is a conceptual model. <code>Individual</code> may be implemented as a Party subtype or as
 type-specific details associated with a Party record. There must be one stable Party
 identity either way.</p>
@@ -2214,6 +2213,10 @@ also a minimal, time-stamped snapshot needed to interpret historical decisions.<
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
       
     
   </body>

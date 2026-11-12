@@ -4,7 +4,7 @@
 Status: Static browser POC; demo data is stored locally, with optional live
 Companies House lookup through a FastAPI proxy.
 
-Repo: `C:\Source\Repos\poc-party`
+Repo: [POC Party](https://newportg.github.io/poc-party/)
 
 The standalone repository contains the runnable Party app and its implementation
 documentation. This folder holds discovery notes, domain models, and requirements.
@@ -25,7 +25,7 @@ retention, identity matching, or compliance controls.
 ## Application documentation
 
 The runnable app, run instructions, and implementation design are in
-`C:\Source\Repos\poc-party`. Start with that repository's README.
+Start with the [published app documentation](https://newportg.github.io/poc-party/).
 
 ## Architecture
 

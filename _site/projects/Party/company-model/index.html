@@ -1993,7 +1993,7 @@ describe the organisation's role in a matter, its owners or controllers, an
 individual's authority to act for it, or the outcome of a company verification or
 compliance check. Those facts belong to separately modelled relationships or processes.</p>
 <h2 id="relationship-to-party">Relationship to Party</h2>
-<div class="highlight"><pre><span></span><code>classDiagram
+<pre class="mermaid"><code>classDiagram
     class Party {
         partyId
         type
@@ -2028,8 +2028,7 @@ compliance check. Those facts belong to separately modelled relationships or pro
     Party &lt;|-- Company
     Company "0..*" -- "0..*" GroupMembership : member of
     Company "0..*" -- "0..*" Participation : participates in
-    Company "0..*" -- "0..*" CompanyRelationship : related to Parties
-</code></pre></div>
+    Company "0..*" -- "0..*" CompanyRelationship : related to Parties</code></pre>
 <p>This is a conceptual model. <code>Company</code> may be implemented as a Party subtype or as
 type-specific details associated with a Party record. There must be one stable Party
 identity either way.</p>
@@ -2265,6 +2264,10 @@ minimal, time-stamped snapshot needed to interpret historical decisions.</p>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
       
     
   </body>

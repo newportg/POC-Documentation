@@ -1839,11 +1839,11 @@
 
 <h1 id="poc-address-application-design">POC Address Application Design</h1>
 <p>This note describes the current Address proof of concept, as published on the
-<a href="C:/Source/Repos/poc-address/docs/documentation.html">documentation page</a>. The implementation
+<a href="https://newportg.github.io/poc-address/documentation.html">documentation page</a>. The implementation
 uses the same browser-native approach as the Asset POC: static HTML, CSS, and
 JavaScript, without a frontend framework or build system.</p>
 <h2 id="architecture">Architecture</h2>
-<div class="highlight"><pre><span></span><code>flowchart LR
+<pre class="mermaid"><code>flowchart LR
     Browser["Static browser app&lt;br/&gt;HTML + CSS + JavaScript"]
     UI["Address UI&lt;br/&gt;search + results + details"]
     Client["Loqate client&lt;br/&gt;loqate-client.js"]
@@ -1859,15 +1859,14 @@ JavaScript, without a frontend framework or build system.</p>
     Client --&gt;|HTTP API request| Proxy
     Proxy --&gt;|HTTPS request| Loqate
     UI --&gt; Leaflet
-    Leaflet --&gt;|Map tile requests| Tiles
-</code></pre></div>
+    Leaflet --&gt;|Map tile requests| Tiles</code></pre>
 <p>The app loads directly as a static page. The interface and application logic are in
 <code>src/poc-address-app.html</code>; the request helpers are in
 <code>src/loqate-client.js</code>; the Loqate proxy is implemented in <code>api/main.py</code>. Leaflet
 is loaded from unpkg.com and OpenStreetMap provides map tiles. There is no
 frontend framework runtime, database, or build step.</p>
 <h2 id="address-lookup-flow">Address lookup flow</h2>
-<div class="highlight"><pre><span></span><code>sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     actor User
     participant App as Browser app
     participant Proxy as FastAPI proxy
@@ -1898,8 +1897,7 @@ frontend framework runtime, database, or build step.</p>
         Proxy--&gt;&gt;App: Verified address fields
     end
     App-&gt;&gt;App: Format lines from AddressFormat and show fields
-    App-&gt;&gt;Map: Center map on verified coordinates when available
-</code></pre></div>
+    App-&gt;&gt;Map: Center map on verified coordinates when available</code></pre>
 <p>The supported country list is embedded in the page. Without a key, only the included
 sample searches (<code>tf26rf</code> and <code>EC2M 7NH</code>) return data. With a key, the browser
 sends the <code>X-Loqate-Api-Key</code> header to the FastAPI proxy, which calls Loqate. The
@@ -2028,6 +2026,10 @@ engine.</p>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
       
     
   </body>

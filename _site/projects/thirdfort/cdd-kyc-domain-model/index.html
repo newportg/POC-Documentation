@@ -1912,7 +1912,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code>erDiagram
+<pre class="mermaid"><code>erDiagram
     ORGANISATION ||--o{ TEAM : "has"
     ORGANISATION ||--o{ USER_ACCOUNT : "has"
     ORGANISATION ||--o{ MATTER : "owns"
@@ -1989,8 +1989,7 @@
         string rationale
         string decided_by
         datetime decided_at
-    }
-</code></pre></div>
+    }</code></pre>
 <h2 id="journey-shapes">Journey shapes</h2>
 <p>A journey is 1:1 with exactly one provider container. Which container depends on what was asked for:</p>
 <table>
@@ -2178,6 +2177,10 @@
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
       
     
   </body>

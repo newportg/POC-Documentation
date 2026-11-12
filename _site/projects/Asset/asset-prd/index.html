@@ -2475,7 +2475,7 @@ links, not a separately maintained relationship. An estate has a defined boundar
 may include multiple land parcels and buildings. The record should make its type,
 boundary representation, and known relationships clear.</p>
 <h2 id="conceptual-model">Conceptual model</h2>
-<div class="highlight"><pre><span></span><code>erDiagram
+<pre class="mermaid"><code>erDiagram
     ASSET ||--o{ ASSET_RELATIONSHIP : "has related assets"
     ASSET ||--o{ PARTY_ASSET_RELATIONSHIP : "has party relationships"
     ASSET ||--o{ MATTER_ASSET_ASSOCIATION : "used in matters"
@@ -2514,8 +2514,7 @@ boundary representation, and known relationships clear.</p>
         string matter_id FK
         string asset_id FK
         string role
-    }
-</code></pre></div>
+    }</code></pre>
 <p>This is a conceptual model, not a physical schema. Asset classifications, property
 details, external identifiers, and geospatial data may be represented in related
 records, provided that asset identity and relationship semantics remain explicit.</p>
@@ -3156,6 +3155,10 @@ property taxonomy.</p>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
       
     
   </body>

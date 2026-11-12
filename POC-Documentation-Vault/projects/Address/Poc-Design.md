@@ -1,7 +1,7 @@
 # POC Address Application Design
 
 This note describes the current Address proof of concept, as published on the
-[documentation page](C:/Source/Repos/poc-address/docs/documentation.html). The implementation
+[documentation page](https://newportg.github.io/poc-address/documentation.html). The implementation
 uses the same browser-native approach as the Asset POC: static HTML, CSS, and
 JavaScript, without a frontend framework or build system.
 

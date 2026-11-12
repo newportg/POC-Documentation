@@ -1,7 +1,7 @@
 # UPU S42 Addressing Standard
 
 Universal Postal Union framework for postal addressing.
-Source: [generated standards page](C:/Source/Repos/poc-address/docs/documentation.html) (UPU S42 tab).
+Source: [generated standards page](https://newportg.github.io/poc-address/documentation.html) (UPU S42 tab).
 
 The UPU S42 standard provides a comprehensive framework for postal addressing, designed to accommodate the diverse formats used by different countries. It includes a generic list of address elements and country-specific templates to guide users in formatting addresses correctly for mail delivery.
 
