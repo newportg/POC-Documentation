@@ -11,6 +11,11 @@ WIKILINK = re.compile(r"\[\[([^\]]+)\]\]")
 def on_page_markdown(markdown: str, page, config, files) -> str:
     source = PurePosixPath(page.file.src_uri)
     docs_dir = Path(config["docs_dir"])
+    available_files = {
+        path.relative_to(docs_dir).as_posix().casefold(): path.relative_to(docs_dir).as_posix()
+        for path in docs_dir.rglob("*")
+        if path.is_file()
+    }
 
     def replace(match: re.Match[str]) -> str:
         target_and_label = match.group(1)
@@ -29,7 +34,8 @@ def on_page_markdown(markdown: str, page, config, files) -> str:
             candidates.append(f"{target}.md")
 
         resolved = next(
-            (candidate for candidate in candidates if (docs_dir / candidate).is_file()),
+            (available_files[candidate.casefold()] for candidate in candidates
+             if candidate.casefold() in available_files),
             None,
         )
         if resolved is None:

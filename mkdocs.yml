@@ -65,7 +65,7 @@ nav:
           - Addressing standards: projects/Address/Overview.md
           - UPU S42: projects/Address/UPU-S42.md
           - ISO 20022: projects/Address/ISO-20022.md
-          - UK address format: projects/Address/UK-Address-Format.md
+          - UK address format: projects/Address/uk-address-format.md
       - Asset:
           - Overview: projects/Asset/README.md
           - Architecture: projects/Asset/architecture.md
