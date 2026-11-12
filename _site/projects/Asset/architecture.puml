@@ -5,26 +5,26 @@ title POC Asset - Application Architecture
 
 Business_Actor(user, "Asset user")
 
-Application_Component(assetApp, "Asset browser app", "Static HTML, CSS and JavaScript")
-Application_Component(assetModel, "Asset model", "Fixtures, validation, search and relationships")
-Application_Component(addressClient, "Address client", "Optional address lookup client")
-Application_Component(addressApi, "Address proxy API", "POC Address FastAPI service")
-Application_Component(leaflet, "Leaflet map", "Browser map component")
+Application_Component(assetApp, "Asset browser app")
+Application_Component(assetModel, "Asset model")
+Application_Component(addressClient, "Address client")
+Application_Component(addressApi, "Address proxy API")
+Application_Component(leaflet, "Leaflet map")
 
-Technology_Device browser, "Browser"
+Technology_Device(browser, "Browser")
 Technology_Service(localStorage, "Browser localStorage")
-System_Software(loqate, "Loqate APIs")
-System_Software(osm, "OpenStreetMap tiles")
+Technology_SystemSoftware(loqate, "Loqate APIs")
+Technology_SystemSoftware(osm, "OpenStreetMap tiles")
 
 Rel_Assignment(user, browser)
 Rel_Composition(browser, assetApp)
-Rel_UsedBy(assetApp, assetModel)
-Rel_Access(assetApp, localStorage, "Asset records and theme")
-Rel_UsedBy(assetApp, addressClient)
-Rel_UsedBy(assetApp, leaflet)
-Rel_Flow(addressClient, addressApi, "Optional address search and retrieve")
-Rel_Flow(addressApi, loqate, "Find and verify HTTPS requests")
-Rel_Flow(leaflet, osm, "Map tile requests")
+Rel_Serving(assetApp, assetModel)
+Rel_Access(assetApp, localStorage)
+Rel_Serving(assetApp, addressClient)
+Rel_Serving(assetApp, leaflet)
+Rel_Flow(addressClient, addressApi)
+Rel_Flow(addressApi, loqate)
+Rel_Flow(leaflet, osm)
 
 note right of assetApp
   The main application has no

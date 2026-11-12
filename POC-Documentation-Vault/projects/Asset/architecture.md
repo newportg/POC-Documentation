@@ -5,6 +5,8 @@ lookup through the POC Address API. The canonical architecture diagram is
 [`architecture.puml`](./architecture.puml) and uses the PlantUML ArchiMate
 library.
 
+![POC Asset application architecture](./architecture.svg)
+
 ## Current architecture
 
 - The browser hosts the catalogue, filters, detail panel, create/edit dialog,

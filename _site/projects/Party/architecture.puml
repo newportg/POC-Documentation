@@ -5,22 +5,22 @@ title POC Party - Application Architecture
 
 Business_Actor(user, "Party user")
 
-Application_Component(partyApp, "Party browser app", "Static HTML, CSS and JavaScript")
-Application_Component(partyModel, "Party model", "Fixtures, validation and search")
-Application_Component(partyApi, "Companies House proxy API", "Optional FastAPI service")
-Application_Component(localMock, "Companies House mock", "Built-in Zoomalong Limited response")
+Application_Component(partyApp, "Party browser app")
+Application_Component(partyModel, "Party model")
+Application_Component(partyApi, "Companies House proxy API")
+Application_Component(localMock, "Companies House mock")
 
-Technology_Device browser, "Browser"
+Technology_Device(browser, "Browser")
 Technology_Service(localStorage, "Browser localStorage")
-System_Software(companiesHouse, "Companies House API")
+Technology_SystemSoftware(companiesHouse, "Companies House API")
 
 Rel_Assignment(user, browser)
 Rel_Composition(browser, partyApp)
-Rel_UsedBy(partyApp, partyModel)
-Rel_Access(partyApp, localStorage, "Party records and theme")
-Rel_Flow(partyApp, localMock, "Built-in query")
-Rel_Flow(partyApp, partyApi, "Optional company search")
-Rel_Flow(partyApi, companiesHouse, "Authenticated HTTPS search")
+Rel_Serving(partyApp, partyModel)
+Rel_Access(partyApp, localStorage)
+Rel_Flow(partyApp, localMock)
+Rel_Flow(partyApp, partyApi)
+Rel_Flow(partyApi, companiesHouse)
 
 note right of partyApi
   Endpoints:

@@ -5,6 +5,8 @@ proxy. The canonical architecture diagram is
 [`architecture.puml`](./architecture.puml) and uses the PlantUML ArchiMate
 library.
 
+![POC Address application architecture](./architecture.svg)
+
 ## Current architecture
 
 - The browser hosts the user interface, address search, result selection, detail

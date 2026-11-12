@@ -5,6 +5,8 @@ Companies House proxy. The canonical architecture diagram is
 [`architecture.puml`](./architecture.puml) and uses the PlantUML ArchiMate
 library.
 
+![POC Party application architecture](./architecture.svg)
+
 ## Current architecture
 
 - The browser hosts the Party catalogue, search and filters, detail panel,
