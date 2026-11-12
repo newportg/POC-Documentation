@@ -1,8 +1,8 @@
 
 # Party
 
-Status: Static browser POC in progress; demo data will be stored locally, with no
-backend or live service integration.
+Status: Static browser POC; demo data is stored locally, with optional live
+Companies House lookup through a FastAPI proxy.
 
 Repo: `C:\Source\Repos\poc-party`
 
@@ -26,5 +26,9 @@ retention, identity matching, or compliance controls.
 
 The runnable app, run instructions, and implementation design are in
 `C:\Source\Repos\poc-party`. Start with that repository's README.
+
+## Architecture
+
+- [[architecture|Application architecture and ArchiMate diagram]]
 
 Last updated: 2026-11-05.

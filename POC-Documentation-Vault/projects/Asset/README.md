@@ -1,8 +1,8 @@
 
 # Asset
 
-Status: Static browser POC; demo data is stored locally in the browser, with no backend
-or live service integration.
+Status: Static browser POC; demo data is stored locally in the browser, with
+optional live address lookup through the POC Address API.
 
 Repo: `C:\Source\Repos\poc-asset`
 
@@ -22,5 +22,9 @@ app demonstrates a subset using sample data.
 
 The runnable app, run instructions, and implementation design are in
 `C:\Source\Repos\poc-asset`. Start with that repository's README.
+
+## Architecture
+
+- [[architecture|Application architecture and ArchiMate diagram]]
 
 Last updated: 2026-11-05.

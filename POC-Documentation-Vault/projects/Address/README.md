@@ -11,6 +11,7 @@ the current browser-native implementation.
 
 ## Documentation
 
+- [[architecture|Application architecture and ArchiMate diagram]]
 - [[Overview|International addressing standards overview]]
 - [[Poc-Design|POC application design]]
 - [[Loqate-api|Loqate API integration]]
