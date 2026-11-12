@@ -1,0 +1,14 @@
+:root {
+  --md-primary-fg-color: #6366f1;
+  --md-accent-fg-color: #a78bfa;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  letter-spacing: -0.02em;
+}
+
+.md-typeset pre > code {
+  tab-size: 2;
+}

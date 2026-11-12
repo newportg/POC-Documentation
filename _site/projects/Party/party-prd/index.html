@@ -1,0 +1,2702 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project research, architecture, and proof-of-concept documentation">
+      
+      
+      
+        <link rel="canonical" href="https://newportg.github.io/POC-Documentation/projects/Party/party-prd/">
+      
+      
+        <link rel="prev" href="../architecture/">
+      
+      
+        <link rel="next" href="../individual-model/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Product requirements - POC Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#party-product-requirements-document" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="POC Documentation" class="md-header__button md-logo" aria-label="POC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            POC Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Product requirements
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/newportg/POC-Documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    newportg/POC-Documentation
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="POC Documentation" class="md-nav__button md-logo" aria-label="POC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    POC Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/newportg/POC-Documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    newportg/POC-Documentation
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Address
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/Poc-Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/Loqate-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loqate API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Addressing standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/UPU-S42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UPU S42
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/ISO-20022/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ISO 20022
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/UK-Address-Format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UK address format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Asset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Asset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Asset/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Asset/asset-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Party
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Party
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users-and-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Users and responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-journeys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User journeys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User journeys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-or-find-a-party" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create or find a Party
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-group-party" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a group Party
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-party-or-membership-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Party or membership details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functional requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity and lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-membership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Group membership
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-privacy-and-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access, privacy, and audit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success measures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvp-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MVP scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-and-open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies and open questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceptance criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../individual-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Individual model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../company-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Instruction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Instruction/instruction-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Instruction/graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WIP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WIP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/WIP-process-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/euro-property-transaction-wip-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Property transaction process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/euro-wip-entity-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entity model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thirdfort
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Thirdfort
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/cdd-kyc-domain-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CDD/ KYC domain model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/cdd-poc-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CDD POC app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/internal-cdd-process-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Internal CDD process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/thirdfort-api-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thirdfort API notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiki
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Wiki
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/application-project-organisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project organisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users-and-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Users and responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-journeys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User journeys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User journeys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-or-find-a-party" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create or find a Party
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-group-party" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a group Party
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-party-or-membership-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update Party or membership details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functional requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity and lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-membership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Group membership
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-privacy-and-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access, privacy, and audit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success measures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvp-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MVP scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-and-open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies and open questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceptance criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="party-product-requirements-document">Party — Product Requirements Document</h1>
+<p>Status: draft for review. Owner: Solution Architecture. Date: 2026-11-03.</p>
+<h2 id="summary">Summary</h2>
+<p>Party is a reusable, authoritative record for a person, a company, or a group made up
+of people and/or companies. Other business processes can refer to a Party rather than
+creating their own disconnected copy of a client, counterparty, or related entity.</p>
+<p>A group is itself a Party. It represents a business-relevant collection of people
+and/or companies, such as joint purchasers, a family, a corporate group, or a group of
+beneficiaries. Membership and each member's role are recorded explicitly.</p>
+<p>The product must distinguish the identity of a Party from its participation in a
+matter or process. A Party may be reused in many contexts; its context-specific role
+belongs to the relationship or process, not to the Party's identity.</p>
+<h2 id="problem">Problem</h2>
+<p>Business processes need to record individuals, companies, and arrangements involving
+more than one of either. If each process models these independently, the same person
+or company can be duplicated, group membership is difficult to represent, and
+downstream processes cannot reliably tell who a record represents.</p>
+<p>The existing CDD/KYC domain model describes a <code>Subject</code> as a person or company. It
+does not yet define a reusable Party concept or a group that can be assessed as one
+participant while retaining its constituent members.</p>
+<h2 id="goals">Goals</h2>
+<ul>
+<li>Represent an individual, a company, or a group of individuals and/or companies
+  consistently.</li>
+<li>Make a Party reusable across matters and business processes.</li>
+<li>Preserve the identity and details of group members while allowing the group itself
+  to be referenced as a participant.</li>
+<li>Record membership, roles, and changes with clear attribution and history.</li>
+<li>Protect personal and commercially sensitive information through access control,
+  minimisation, and auditability.</li>
+<li>Give downstream systems a stable identifier and a clear way to determine the Party
+  type and its members.</li>
+</ul>
+<h2 id="non-goals">Non-goals</h2>
+<ul>
+<li>Performing identity verification, AML screening, or making compliance decisions.</li>
+<li>Replacing matter, customer, CRM, or case-management systems.</li>
+<li>Defining the legal meaning or authority of a group; processes remain responsible for
+  validating that a group can act in a particular capacity.</li>
+<li>Automatically merging records based only on approximate name matches.</li>
+<li>Modeling arbitrary nested groups in the MVP. Whether a group can contain another
+  group remains an open question.</li>
+</ul>
+<h2 id="users-and-responsibilities">Users and responsibilities</h2>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Need</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Case handler / adviser</td>
+<td>Find or create the right person, company, or group and record its role in a matter.</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Correct Party details and membership while preserving an audit history.</td>
+</tr>
+<tr>
+<td>Compliance reviewer</td>
+<td>Understand who was assessed, including the constituents of a group.</td>
+</tr>
+<tr>
+<td>Integrating systems</td>
+<td>Create or reference Parties reliably without duplicating identity data.</td>
+</tr>
+<tr>
+<td>Administrator / privacy officer</td>
+<td>Control access to sensitive data and support retention and correction obligations.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="core-concepts">Core concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Party</strong></td>
+<td>A stable, reusable business identity. Every Party has exactly one type: <code>individual</code>, <code>company</code>, or <code>group</code>.</td>
+</tr>
+<tr>
+<td><strong>Individual</strong></td>
+<td>A natural person represented as a Party; see <a href="../individual-model/">individual model</a></td>
+</tr>
+<tr>
+<td><strong>Company</strong></td>
+<td>A legally or commercially recognized organization represented as a Party; see <a href="../company-model/">company model</a></td>
+</tr>
+<tr>
+<td><strong>Group</strong></td>
+<td>A Party composed of one or more member Parties. In the MVP, its members are individuals and/or companies.</td>
+</tr>
+<tr>
+<td><strong>Membership</strong></td>
+<td>A time-aware relationship between a group Party and a member Party, optionally describing the member's role in that group.</td>
+</tr>
+<tr>
+<td><strong>Participation</strong></td>
+<td>A relationship between a Party and a matter or process. It carries context-specific roles, such as purchaser or director, without changing the Party's identity.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>erDiagram
+    PARTY ||--o| INDIVIDUAL_DETAILS : "has"
+    PARTY ||--o| COMPANY_DETAILS : "has"
+    PARTY ||--o{ GROUP_MEMBERSHIP : "has members"
+    PARTY ||--o{ GROUP_MEMBERSHIP : "is a member"
+    PARTY ||--o{ PARTICIPATION : "takes part in"
+
+    PARTY {
+        string id PK
+        string type "individual | company | group"
+        string display_name
+        string status
+        datetime created_at
+        datetime updated_at
+    }
+    INDIVIDUAL_DETAILS {
+        string party_id PK
+        string given_names
+        string family_name
+        date date_of_birth
+    }
+    COMPANY_DETAILS {
+        string party_id PK
+        string legal_name
+        string registration_number
+        string registration_country
+    }
+    GROUP_MEMBERSHIP {
+        string group_party_id FK
+        string member_party_id FK
+        string role
+        date valid_from
+        date valid_to
+    }
+    PARTICIPATION {
+        string party_id FK
+        string context_id
+        string role
+    }
+</code></pre></div>
+<p>The diagram is conceptual. The implementation may store subtype details differently,
+provided the Party type, membership, and identity boundaries remain explicit.</p>
+<h2 id="user-journeys">User journeys</h2>
+<h3 id="create-or-find-a-party">Create or find a Party</h3>
+<ol>
+<li>A user or integrating system searches for an existing Party using available
+   identifiers and descriptive details.</li>
+<li>Potential matches are shown with enough information to distinguish them, subject
+   to the user's access permissions.</li>
+<li>The caller either selects an existing Party or creates a new Party of the correct
+   type.</li>
+<li>The system assigns a stable Party identifier and records the creation event.</li>
+</ol>
+<p>An uncertain match must be presented for review; the system must not silently merge
+records.</p>
+<h3 id="create-a-group-party">Create a group Party</h3>
+<ol>
+<li>The user creates a Party with type <code>group</code> and a meaningful display name.</li>
+<li>The user adds one or more existing or newly created individual/company Parties as
+   members.</li>
+<li>The user may record each member's group-specific role and membership dates.</li>
+<li>The resulting group Party can be referenced in a matter or process, while its
+   members remain independently addressable.</li>
+</ol>
+<h3 id="update-party-or-membership-details">Update Party or membership details</h3>
+<ol>
+<li>An authorized user changes Party details or group membership.</li>
+<li>The system records who made the change, when it happened, and the fields or
+   membership affected.</li>
+<li>Historical participation and decisions remain interpretable against the Party
+   details and membership that applied at the relevant time.</li>
+</ol>
+<h2 id="functional-requirements">Functional requirements</h2>
+<p>Priority: <strong>Must</strong> (required for MVP), <strong>Should</strong> (important but deferrable),
+<strong>Could</strong> (future enhancement).</p>
+<h3 id="identity-and-lifecycle">Identity and lifecycle</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRT-1</td>
+<td>Must</td>
+<td>Every Party has a stable, unique identifier and exactly one type: individual, company, or group.</td>
+</tr>
+<tr>
+<td>PRT-2</td>
+<td>Must</td>
+<td>A Party can be created, retrieved, searched, and updated by authorized users or systems.</td>
+</tr>
+<tr>
+<td>PRT-3</td>
+<td>Must</td>
+<td>An individual Party supports a display name and structured person details; a company Party supports a legal name and available registration details.</td>
+</tr>
+<tr>
+<td>PRT-4</td>
+<td>Must</td>
+<td>A group Party has a display name and at least one member before it is used in a business process.</td>
+</tr>
+<tr>
+<td>PRT-5</td>
+<td>Must</td>
+<td>A group can contain both individual and company Parties. The same member may belong to more than one group.</td>
+</tr>
+<tr>
+<td>PRT-6</td>
+<td>Must</td>
+<td>A Party used by a matter or process is referenced by its stable identifier; context-specific roles are recorded on the participation, not as intrinsic Party attributes.</td>
+</tr>
+<tr>
+<td>PRT-7</td>
+<td>Must</td>
+<td>Party type cannot be changed in place. Correcting a wrongly typed record requires a controlled replacement or correction process that preserves references and history.</td>
+</tr>
+<tr>
+<td>PRT-8</td>
+<td>Must</td>
+<td>A Party can be marked inactive or archived without deleting its historical references.</td>
+</tr>
+<tr>
+<td>PRT-9</td>
+<td>Should</td>
+<td>Search supports identifiers and names, with type and status filters.</td>
+</tr>
+<tr>
+<td>PRT-10</td>
+<td>Should</td>
+<td>Search can surface likely duplicates but does not automatically merge them.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="group-membership">Group membership</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRP-1</td>
+<td>Must</td>
+<td>Each membership links one group Party to one individual or company Party.</td>
+</tr>
+<tr>
+<td>GRP-2</td>
+<td>Must</td>
+<td>Membership can include an optional role and effective start/end dates.</td>
+</tr>
+<tr>
+<td>GRP-3</td>
+<td>Must</td>
+<td>Membership changes are auditable; ending a membership does not erase its history.</td>
+</tr>
+<tr>
+<td>GRP-4</td>
+<td>Must</td>
+<td>A group cannot be its own member, and duplicate active membership links are rejected.</td>
+</tr>
+<tr>
+<td>GRP-5</td>
+<td>Must</td>
+<td>A group cannot be used in a process if it has no active members; the user receives a clear validation error.</td>
+</tr>
+<tr>
+<td>GRP-6</td>
+<td>Should</td>
+<td>The system can show the current and historical members of a group, including membership dates and roles.</td>
+</tr>
+<tr>
+<td>GRP-7</td>
+<td>Could</td>
+<td>Support nested groups, subject to agreed rules for cycle prevention, effective membership, and whether nested members count as direct or indirect members.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="access-privacy-and-audit">Access, privacy, and audit</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEC-1</td>
+<td>Must</td>
+<td>Store only details needed for an approved business purpose; protect sensitive personal and company information in storage and transit.</td>
+</tr>
+<tr>
+<td>SEC-2</td>
+<td>Must</td>
+<td>Access to and changes of sensitive Party data are authorized and auditable.</td>
+</tr>
+<tr>
+<td>SEC-3</td>
+<td>Must</td>
+<td>Every create, update, membership change, archive, and merge/correction action records actor, time, and affected Party.</td>
+</tr>
+<tr>
+<td>SEC-4</td>
+<td>Must</td>
+<td>Deactivation or correction does not silently alter historical matter or process records.</td>
+</tr>
+<tr>
+<td>SEC-5</td>
+<td>Must</td>
+<td>Retention, correction, and anonymisation follow the applicable data-protection and records-retention policy.</td>
+</tr>
+<tr>
+<td>SEC-6</td>
+<td>Should</td>
+<td>Access can be scoped by organization and business role, with sensitive fields restricted where required.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="integration">Integration</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INT-1</td>
+<td>Must</td>
+<td>Integrating systems can create a Party or reference an existing Party by stable identifier.</td>
+</tr>
+<tr>
+<td>INT-2</td>
+<td>Must</td>
+<td>A Party response identifies its type and provides the appropriate identity details; a group response identifies its members and membership roles/dates.</td>
+</tr>
+<tr>
+<td>INT-3</td>
+<td>Must</td>
+<td>Invalid Party types, malformed identity details, invalid group membership, and unauthorized access return explicit errors rather than success-shaped defaults.</td>
+</tr>
+<tr>
+<td>INT-4</td>
+<td>Should</td>
+<td>Create requests support an idempotency key so retries do not create duplicate Parties.</td>
+</tr>
+<tr>
+<td>INT-5</td>
+<td>Should</td>
+<td>The Party service exposes enough information for downstream processes to identify whether a Party is an individual, company, or group and to resolve its members.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-principles">Data principles</h2>
+<ul>
+<li>Identity and process participation are separate: being a purchaser on one matter does
+  not make someone a purchaser on every matter.</li>
+<li>A group and its members are distinct Parties. Creating or updating the group does not
+  overwrite the identity record of a member.</li>
+<li>Membership is a relationship with a history, not a copied list of names.</li>
+<li>Names are useful for display and search but are not reliable unique identifiers.</li>
+<li>Do not infer legal authority, beneficial ownership, or control solely from group
+  membership or a free-text role.</li>
+<li>Store optional identity attributes only when justified by a consuming process.</li>
+</ul>
+<h2 id="success-measures">Success measures</h2>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parties created with an explicit type</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Group Parties used in a process with at least one active member</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Party and membership changes with an attributable audit event</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Duplicate Party creation caused by retried requests with idempotency enabled</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Historical process records changed by Party updates</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Unreviewed ambiguous match automatically merged</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mvp-scope">MVP scope</h2>
+<p>The MVP includes:</p>
+<ul>
+<li>Individual, company, and group Party types.</li>
+<li>Creation, retrieval, update, search, and inactive/archive status.</li>
+<li>Groups containing one or more individual and/or company Parties.</li>
+<li>Optional member roles and effective membership dates.</li>
+<li>Stable identifiers, validation, authorization, and auditable changes.</li>
+<li>Downstream reference to a Party without copying its identity as a new record.</li>
+</ul>
+<p>The MVP does not include nested groups, automatic record merging, legal ownership
+inference, or compliance decisioning.</p>
+<h2 id="dependencies-and-open-questions">Dependencies and open questions</h2>
+<ol>
+<li><strong>CDD alignment:</strong> Should Party become the canonical identity model replacing the
+   current <code>Subject</code> (person/company), or should CDD retain a separate Subject that
+   references Party? The domain contract must be agreed before integration.</li>
+<li><strong>Nested groups:</strong> Can a group contain another group, or are groups limited to
+   direct individual/company members? The MVP assumes direct members only.</li>
+<li><strong>Group meaning:</strong> Are groups only a convenient way to represent joint parties, or
+   must the model distinguish legal entities, households, beneficial ownership groups,
+   and other group kinds?</li>
+<li><strong>Group participation:</strong> When a group is used in a process, must every member
+   automatically participate, or does the caller select the relevant members?</li>
+<li><strong>Membership validation:</strong> Which membership roles and evidence are required for
+   specific processes, and who is responsible for validating authority?</li>
+<li><strong>Ownership and tenancy:</strong> Is Party shared globally, or scoped to an organization
+   with controlled cross-organization reuse?</li>
+<li><strong>Matching and merge:</strong> Which identifiers are authoritative for matching people
+   and companies, and who can approve a merge or identity correction?</li>
+<li><strong>Data policy:</strong> What are the approved retention periods, lawful basis, and
+   anonymisation requirements for each Party type and process?</li>
+</ol>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li>A user can create an individual Party, a company Party, and a group Party.</li>
+<li>A group can include at least one individual and one company at the same time.</li>
+<li>A group is addressable as one Party and its members are individually addressable.</li>
+<li>Group membership can be added, ended, and inspected historically without deleting
+  its audit history.</li>
+<li>A downstream matter can reference a Party and assign a matter-specific role without
+  changing the Party's identity or role in another matter.</li>
+<li>Invalid self-membership, duplicate active membership, and use of an empty group are
+  rejected with actionable errors.</li>
+<li>Updating or deactivating a Party does not rewrite prior participation or decision
+  history.</li>
+<li>Unauthorized readers cannot retrieve protected Party details, and sensitive access
+  is auditable.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

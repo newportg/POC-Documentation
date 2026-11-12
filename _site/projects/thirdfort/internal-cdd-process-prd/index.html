@@ -1,0 +1,3192 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project research, architecture, and proof-of-concept documentation">
+      
+      
+      
+        <link rel="canonical" href="https://newportg.github.io/POC-Documentation/projects/thirdfort/internal-cdd-process-prd/">
+      
+      
+        <link rel="prev" href="../cdd-poc-app/">
+      
+      
+        <link rel="next" href="../thirdfort-api-notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Internal CDD process - POC Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#internal-cdd-process-prd" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="POC Documentation" class="md-header__button md-logo" aria-label="POC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            POC Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Internal CDD process
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/newportg/POC-Documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    newportg/POC-Documentation
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="POC Documentation" class="md-nav__button md-logo" aria-label="POC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    POC Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/newportg/POC-Documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    newportg/POC-Documentation
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Address
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/Poc-Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/Loqate-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loqate API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Addressing standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/UPU-S42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UPU S42
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/ISO-20022/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ISO 20022
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/UK-Address-Format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UK address format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Asset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Asset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Asset/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Asset/asset-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Party
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Party
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/party-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/individual-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Individual model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/company-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Instruction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Instruction/instruction-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Instruction/graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WIP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WIP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/WIP-process-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/euro-property-transaction-wip-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Property transaction process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/euro-wip-entity-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entity model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thirdfort
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Thirdfort
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cdd-kyc-domain-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CDD/ KYC domain model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cdd-poc-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CDD POC app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Internal CDD process
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Internal CDD process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Goals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#success-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success measures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users-and-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Users and roles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functional requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intake-the-matter-and-the-subject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intake — the matter and the subject
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan-what-we-are-asking-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan — what we are asking for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dispatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engage-getting-the-subject-through-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engage — getting the subject through it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observe-deriving-the-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observe — deriving the truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#findings-screening-hits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Findings — screening hits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decide
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retain-and-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retain and audit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bill-and-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bill and report
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-functional requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compliance-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compliance requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-this-is-specified-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where this is specified today
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-phasing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release phasing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assumptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceptance criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thirdfort-api-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thirdfort API notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiki
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Wiki
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/application-project-organisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project organisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Goals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Goals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#success-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success measures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users-and-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Users and roles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functional requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intake-the-matter-and-the-subject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intake — the matter and the subject
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan-what-we-are-asking-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan — what we are asking for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dispatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engage-getting-the-subject-through-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engage — getting the subject through it
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observe-deriving-the-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observe — deriving the truth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#findings-screening-hits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Findings — screening hits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decide
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retain-and-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retain and audit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bill-and-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bill and report
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-functional requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compliance-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compliance requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-this-is-specified-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where this is specified today
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release-phasing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Release phasing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assumptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceptance criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="internal-cdd-process-prd">Internal CDD process — PRD</h1>
+<p>What we are building, for whom, and what "done" means: one internal process for running
+customer due diligence across the firm, with Thirdfort as the verification provider behind
+it. This is the requirements counterpart to the design in [[internal-cdd-api]]; the API is
+the mechanism, the process is the product.</p>
+<p>Status: draft for review. Owner: Solution Architecture. Date: 2026-10-15.</p>
+<p>Related: [[internal-cdd-api]], <a href="../cdd-kyc-domain-model/">cdd kyc domain model</a>, [[cdd-journey-state-model]],
+<a href="../thirdfort-api-notes/">thirdfort api notes</a>, [[internal-cdd-api-openapi.yaml]], <a href="../cdd-poc-app/">cdd poc app</a></p>
+<h2 id="summary">Summary</h2>
+<p>CDD work today is arranged around a provider's verification toolkit: transactions, checks,
+tasks and reports. That shape does not match how the firm actually works a matter, and it
+puts the compliance decision nowhere at all — Thirdfort returns evidence and a result flag
+and stops.</p>
+<p>We are building one internal process that owns the whole arc: <strong>plan what is required of a
+subject, dispatch it, chase it, watch it, assess the evidence, record the decision, keep the
+record, and keep watching afterwards.</strong> The provider becomes an implementation detail behind
+that process.</p>
+<p>Concretely, this means an internal API and service layer in our own vocabulary — <code>Matter</code>,
+<code>Subject</code>, <code>Journey</code>, <code>Requirement</code>, <code>Finding</code>, <code>Decision</code> — that internal systems and
+advisers call instead of integrating Thirdfort directly. Which is the thing every team would
+otherwise rebuild, separately and worse.</p>
+<h2 id="problem">Problem</h2>
+<p>Three distinct failures, one cause.</p>
+<ol>
+<li><strong>The vocabulary is the provider's.</strong> Our systems think in matters, clients and files.
+   Thirdfort thinks in transactions, checks and tasks. Every integration therefore begins
+   with a translation layer, and each one translates differently.</li>
+<li><strong>The truth is buried.</strong> Whether an ID check completed, <em>which</em> method actually completed,
+   whether Source of Funds completed at all, and what is chargeable are all only recoverable
+   by reading nested report payloads. An Enhanced NFC check can silently degrade to an
+   Original ID. A <code>transaction: closed</code> means the PDF is ready, not that the client passed.</li>
+<li><strong>Nobody owns the decision.</strong> The provider has no concept of a compliance decision, a
+   reviewer, or an approval. So the decision — the point of the exercise — lives in
+   spreadsheets, inboxes and individual memory, or is implicitly inferred from a provider
+   status that does not mean what it appears to mean.</li>
+</ol>
+<p>Add the reliability gap: Thirdfort documents no idempotency, no retry, no ordering guarantee,
+no rate-limit contract and no replay. Every team building directly inherits all of it.</p>
+<h2 id="goals">Goals</h2>
+<ul>
+<li><strong>One process, one record.</strong> A matter's CDD is run and evidenced in one place, from plan to
+  decision to retention, with an append-only audit trail.</li>
+<li><strong>The decision is explicit and owned.</strong> A named reviewer records an outcome, a risk rating
+  and a rationale. Terminal states are earned, never inferred from a provider status.</li>
+<li><strong>Derived truth is delivered, not computed by callers.</strong> One summary call answers "where is
+  this, what is outstanding, what evidence do we hold, what is chargeable".</li>
+<li><strong>The provider is replaceable, and invisible.</strong> Callers never name a transaction, a check,
+  a task, a report, or an API version.</li>
+<li><strong>Failure is absorbed, not passed on.</strong> Duplicate dispatches, dropped webhooks, out-of-order
+  events, provider outages and slow document generation are handled by the layer.</li>
+</ul>
+<h3 id="success-measures">Success measures</h3>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Journeys dispatched without an engineering ticket per new product</td>
+<td>all supported kinds</td>
+</tr>
+<tr>
+<td>Journeys with a recorded decision and reviewer</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Reports-of-record held internally at end of relationship</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Duplicate journeys created by a retried dispatch</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Journeys stuck in a non-terminal state beyond threshold</td>
+<td>&lt; 2%, and all explained on the timeline</td>
+</tr>
+<tr>
+<td>Chargeability derived from provider payloads by Finance</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="non-goals">Non-goals</h2>
+<ul>
+<li><strong>A provider-agnostic abstraction for its own sake.</strong> We abstract Thirdfort's <em>model</em>, not
+  its features. A second provider is a repository rewrite behind the same domain, and that
+  is enough.</li>
+<li><strong>Consumer-facing UI.</strong> The subject uses the Thirdfort app. We trigger and observe.</li>
+<li><strong>Exposing raw provider payloads or live provider URLs.</strong> No passthrough endpoints. The one
+  escape hatch returns bytes we stored ourselves.</li>
+<li><strong>Replacing the firm's case management.</strong> We hold CDD, not the matter.</li>
+<li><strong>Being system of record for the subject's document custody beyond what regulation requires.</strong></li>
+</ul>
+<h2 id="users-and-roles">Users and roles</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Needs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Case handler / adviser</strong></td>
+<td>Plan requirements for a subject, send it, see progress, chase, know what is blocking, hand off for decision.</td>
+</tr>
+<tr>
+<td><strong>Compliance reviewer / MLRO</strong></td>
+<td>The evidence in one place, findings in context, a decision to record, and an audit trail that survives scrutiny. The authority to approve, refer or reject.</td>
+</tr>
+<tr>
+<td><strong>Ops / QC</strong></td>
+<td>Find stuck journeys, resend invites, correct contact details, replay events, reconcile divergence between our state and the provider's.</td>
+</tr>
+<tr>
+<td><strong>Origination / case systems</strong></td>
+<td>Open a matter and request CDD without understanding verification. Machine-to-machine, idempotent, non-blocking.</td>
+</tr>
+<tr>
+<td><strong>Risk &amp; reporting</strong></td>
+<td>Findings across the book, cycle times, chargeability.</td>
+</tr>
+<tr>
+<td><strong>Finance</strong></td>
+<td>Which requirements are chargeable, per matter, without re-deriving it from report payloads.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-process">The process</h2>
+<div class="highlight"><pre><span></span><code>flowchart LR
+    P1["1&lt;br/&gt;Intake"] --&gt; P2["2&lt;br/&gt;Plan"] --&gt; P3["3&lt;br/&gt;Dispatch"] --&gt; P4["4&lt;br/&gt;Engage"]
+    P4 --&gt; P5["5&lt;br/&gt;Observe"] --&gt; P6["6&lt;br/&gt;Assess"] --&gt; P7["7&lt;br/&gt;Decide"]
+    P7 --&gt; P8["8&lt;br/&gt;Retain&lt;br/&gt;and monitor"]
+    P8 -. "new finding" .-&gt; P6
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Phase</th>
+<th>Who</th>
+<th>Entry → Exit</th>
+<th>Failure modes the process must handle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Intake</strong></td>
+<td>Case handler, origination</td>
+<td>Matter opened, subject captured → subject contactable and sufficiently described</td>
+<td>Duplicate subject records; missing mobile or DOB; unreliable-destination phone numbers</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Plan</strong></td>
+<td>Case handler</td>
+<td>Requirements chosen → plan validated against role and provider constraints</td>
+<td>Incompatible role/requirement pair; title unorderable or out of HMLR hours; a requirement added after dispatch</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Dispatch</strong></td>
+<td>Case handler, origination system</td>
+<td>Plan accepted → provider container created, invite issued</td>
+<td>Retried dispatch; provider outage; latency beyond budget</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Engage</strong></td>
+<td>Subject (Thirdfort app)</td>
+<td>Invite delivered → subject completes tasks</td>
+<td>Undelivered invite; wrong contact details; subject never starts; subject starts and abandons</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Observe</strong></td>
+<td>The layer</td>
+<td>Provider progresses → state and outcomes derived</td>
+<td>Duplicate, out-of-order or dropped events; slow v3 document generation; provider errors</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Assess</strong></td>
+<td>Compliance reviewer, ops</td>
+<td>Requirements terminal → evidence and findings understood</td>
+<td>Findings pending; report <code>error</code>/<code>expired</code>/<code>unobtainable</code> misread as a failed subject; a monitored hit arriving after the decision</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Decide</strong></td>
+<td>Compliance reviewer / MLRO</td>
+<td>Assessment done → decision recorded, journey closed</td>
+<td>Decision attempted against a cancelled or abandoned journey; a re-decision overwriting history</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Retain &amp; monitor</strong></td>
+<td>The layer, compliance</td>
+<td>Journey closed → evidence retained, monitoring continues</td>
+<td>Artefacts unavailable from provider later; renewal silently lapsing; a post-decision hit with no route to reconsider</td>
+</tr>
+</tbody>
+</table>
+<p>Journey-level states and the provider signals that drive them are in
+[[cdd-journey-state-model]]; the units involved are in <a href="../cdd-kyc-domain-model/">cdd kyc domain model</a>.</p>
+<h2 id="functional-requirements">Functional requirements</h2>
+<p>Priority: <strong>Must</strong> (MVP cannot ship without it), <strong>Should</strong> (expected, deferrable once),
+<strong>Could</strong> (nice to have).</p>
+<h3 id="intake-the-matter-and-the-subject">Intake — the matter and the subject</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SET-1</td>
+<td>Must</td>
+<td>Every journey belongs to exactly one matter, and the matter reference travels upstream as the provider <code>ref</code>.</td>
+</tr>
+<tr>
+<td>SET-2</td>
+<td>Must</td>
+<td>A subject is a person or a company, created once and reusable across journeys and matters.</td>
+</tr>
+<tr>
+<td>SET-3</td>
+<td>Must</td>
+<td>A valid, contactable mobile number is required before any app-based requirement is planned; validate with libphonenumber and warn on the known unreliable-delivery country codes.</td>
+</tr>
+<tr>
+<td>SET-4</td>
+<td>Must</td>
+<td>Date of birth, family name and ISO3 country are required before standalone screening.</td>
+</tr>
+<tr>
+<td>SET-5</td>
+<td>Must</td>
+<td>Subject PII is stored encrypted on a minimum-necessary basis; reading it requires an explicit scope and every read is audited.</td>
+</tr>
+<tr>
+<td>SET-6</td>
+<td>Should</td>
+<td>Subject records de-duplicate on name plus date of birth or company number, so a returning client does not become two people.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="plan-what-we-are-asking-for">Plan — what we are asking for</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PLN-1</td>
+<td>Must</td>
+<td>Callers express obligations in our vocabulary (requirement kinds). Provider task names and container types are never part of the caller's request.</td>
+</tr>
+<tr>
+<td>PLN-2</td>
+<td>Must</td>
+<td>Role/requirement compatibility is validated before dispatch — for example proof of ownership is valid only for transferor, borrower and lessor roles.</td>
+</tr>
+<tr>
+<td>PLN-3</td>
+<td>Must</td>
+<td>Requirements are fixed at dispatch. There is no endpoint to add one to a live journey; adding work means a new journey for the same matter and subject.</td>
+</tr>
+<tr>
+<td>PLN-4</td>
+<td>Must</td>
+<td>Title requirements are orderable only when availability is <code>IMMEDIATE</code> and only inside HMLR hours (06:30–23:00 GMT, workdays). The constraint is surfaced before the attempt, not returned as an error from it.</td>
+</tr>
+<tr>
+<td>PLN-5</td>
+<td>Should</td>
+<td>Before dispatch, the caller can preview what will be ordered and an indicative chargeability and count.</td>
+</tr>
+<tr>
+<td>PLN-6</td>
+<td>Should</td>
+<td>A retried or duplicated dispatch intent cannot produce two journeys.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dispatch">Dispatch</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSP-1</td>
+<td>Must</td>
+<td>One call dispatches a journey carrying one or more requirements, and returns a journey identifier and its initial state.</td>
+</tr>
+<tr>
+<td>DSP-2</td>
+<td>Must</td>
+<td>Dispatch is idempotent under a caller-supplied key. Same key and same body returns the original response; same key and a different body is refused with <code>409</code>.</td>
+</tr>
+<tr>
+<td>DSP-3</td>
+<td>Must</td>
+<td>Provider container selection (v2 transaction, v2 check, v3 check) is internal. The caller neither sees nor chooses it.</td>
+</tr>
+<tr>
+<td>DSP-4</td>
+<td>Must</td>
+<td>Provider unavailability never produces a partial journey. The dispatch either succeeds whole or does not happen.</td>
+</tr>
+<tr>
+<td>DSP-5</td>
+<td>Should</td>
+<td>When provider dispatch exceeds the latency budget, the call returns <code>202</code> with a journey id rather than blocking the caller.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="engage-getting-the-subject-through-it">Engage — getting the subject through it</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ENG-1</td>
+<td>Must</td>
+<td>Invite issuance is tracked as issued / delivered / undelivered, and is visible on the journey.</td>
+</tr>
+<tr>
+<td>ENG-2</td>
+<td>Must</td>
+<td>An invite can be re-issued on demand. This is our capability; the provider has no resend endpoint.</td>
+</tr>
+<tr>
+<td>ENG-3</td>
+<td>Should</td>
+<td>An undelivered invite raises an alert within the SLO window so ops can correct the contact details.</td>
+</tr>
+<tr>
+<td>ENG-4</td>
+<td>Should</td>
+<td>Journeys expose time-in-state so ops can chase, and every chase attempt is recorded on the timeline.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="observe-deriving-the-truth">Observe — deriving the truth</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OBS-1</td>
+<td>Must</td>
+<td>Journey and requirement state is computed from a re-read of the provider resource, never from a webhook body. Duplicate events are no-ops; out-of-order events can only move state forwards.</td>
+</tr>
+<tr>
+<td>OBS-2</td>
+<td>Must</td>
+<td>A reconciler re-reads every non-terminal journey on a decaying schedule, covering missed events.</td>
+</tr>
+<tr>
+<td>OBS-3</td>
+<td>Must</td>
+<td>A polling-inbox fallback covers the case where our webhook endpoint is unavailable; messages are de-duplicated and acknowledged only after a successful reconcile.</td>
+</tr>
+<tr>
+<td>OBS-4</td>
+<td>Must</td>
+<td>The identity method that <em>actually completed</em> is reported. An Enhanced NFC journey that degraded to an Original ID is <code>Original</code>, not <code>Enhanced NFC</code>.</td>
+</tr>
+<tr>
+<td>OBS-5</td>
+<td>Must</td>
+<td><code>not_completed</code> is never presented or reported as a failure of the subject. A skipped Source of Funds task is not-completed, not failed.</td>
+</tr>
+<tr>
+<td>OBS-6</td>
+<td>Must</td>
+<td>One reviewer-facing summary states current state, per-requirement outcome, outstanding findings, blockers and chargeability, without the caller understanding any report payload.</td>
+</tr>
+<tr>
+<td>OBS-7</td>
+<td>Must</td>
+<td>A provider <code>400</code> during v3 document generation is classified as upstream-not-ready and retried with backoff. It is never surfaced as a validation error.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="findings-screening-hits">Findings — screening hits</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FND-1</td>
+<td>Must</td>
+<td>Screening hits (PEP, sanction, adverse media) are normalised into findings with a pending/dismissed state, independent of the provider's own hit model.</td>
+</tr>
+<tr>
+<td>FND-2</td>
+<td>Must</td>
+<td>A finding can be dismissed or whitelisted with a reason, attributed to the actor who did it.</td>
+</tr>
+<tr>
+<td>FND-3</td>
+<td>Must</td>
+<td>A change in the hit set on a monitored requirement raises new findings and requires an explicit re-decision. State never moves silently as a result.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="decide">Decide</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEC-1</td>
+<td>Must</td>
+<td>A human decision is recorded against the journey with an outcome, a risk rating, a rationale and a named reviewer.</td>
+</tr>
+<tr>
+<td>DEC-2</td>
+<td>Must</td>
+<td>A journey reaches <code>awaiting_decision</code> only when every requirement has reached a terminal provider status.</td>
+</tr>
+<tr>
+<td>DEC-3</td>
+<td>Must</td>
+<td><code>closed</code> means a decision exists. It is never inferred from a provider status — a provider <code>closed</code> means the PDF is ready.</td>
+</tr>
+<tr>
+<td>DEC-4</td>
+<td>Must</td>
+<td>A re-decision is a new immutable record that supersedes the previous one. Decision history is never rewritten.</td>
+</tr>
+<tr>
+<td>DEC-5</td>
+<td>Must</td>
+<td>A decision against a cancelled or abandoned journey is refused.</td>
+</tr>
+<tr>
+<td>DEC-6</td>
+<td>Should</td>
+<td>A decision cannot be recorded while findings are pending without an explicit acknowledgement, so the guard is visible rather than implicit.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="monitor">Monitor</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MON-1</td>
+<td>Must</td>
+<td>Monitoring is a flag on the journey, not a state. It can outlive <code>closed</code>, because a monitored check can produce a new report version months later.</td>
+</tr>
+<tr>
+<td>MON-2</td>
+<td>Must</td>
+<td>Monitoring cannot be enabled after creation if it was created disabled.</td>
+</tr>
+<tr>
+<td>MON-3</td>
+<td>Must</td>
+<td>Monitoring can be disabled on demand. Aborting a journey disables it automatically.</td>
+</tr>
+<tr>
+<td>MON-4</td>
+<td>Must</td>
+<td>Monitoring renewal is warned at least 21 days ahead.</td>
+</tr>
+<tr>
+<td>MON-5</td>
+<td>Must</td>
+<td>A post-decision hit raises a finding and a timeline event. It never silently moves a closed journey's state.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="retain-and-audit">Retain and audit</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUD-1</td>
+<td>Must</td>
+<td>An append-only timeline records everything that happened, internal or provider-driven. Divergence between our state and the provider's is recorded, not smoothed over.</td>
+</tr>
+<tr>
+<td>AUD-2</td>
+<td>Must</td>
+<td>The provider's authoritative artefacts (report JSON, results PDF, additional-documents ZIP, uploaded documents) are copied into our own store, so the report of record does not depend on continued provider availability.</td>
+</tr>
+<tr>
+<td>AUD-3</td>
+<td>Must</td>
+<td>Provider bytes are served from our store. Callers never receive a live provider URL.</td>
+</tr>
+<tr>
+<td>AUD-4</td>
+<td>Must</td>
+<td>Records are retained for the regulated period (currently 5 years from the end of the relationship) and anonymised rather than deleted by caller action.</td>
+</tr>
+<tr>
+<td>AUD-5</td>
+<td>Must</td>
+<td>Evidence of consumer consent and of the firm's acceptance of provider terms is captured and filed with the matter.</td>
+</tr>
+<tr>
+<td>AUD-6</td>
+<td>Must</td>
+<td>Cancellation is available at any non-terminal point. It is irreversible, and the process says so at the point of use.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bill-and-report">Bill and report</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pri</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BIL-1</td>
+<td>Must</td>
+<td>Chargeability is derived per requirement: ID per completed check, Source of Funds per property transaction grouped by identical <code>ref</code>, international address verification not chargeable where the address country is <code>GBR</code>.</td>
+</tr>
+<tr>
+<td>BIL-2</td>
+<td>Must</td>
+<td>The provider <code>ref</code> format is canonical and stable, so chargeability grouping is deterministic.</td>
+</tr>
+<tr>
+<td>BIL-3</td>
+<td>Should</td>
+<td>Chargeability is exposed on the requirement so Finance does not re-derive it from payloads.</td>
+</tr>
+<tr>
+<td>MI-1</td>
+<td>Must</td>
+<td>Findings are queryable across journeys by status, category and date.</td>
+</tr>
+<tr>
+<td>MI-2</td>
+<td>Should</td>
+<td>Cycle time and completion rate are reportable by requirement kind, to show where subjects stall.</td>
+</tr>
+<tr>
+<td>MI-3</td>
+<td>Should</td>
+<td>Chargeability rolls up per matter and per organisation.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="non-functional-requirements">Non-functional requirements</h2>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dispatch latency</td>
+<td>p95 under 1.5 s including provider dispatch; otherwise queue and return <code>202</code> with a journey id.</td>
+</tr>
+<tr>
+<td>Read latency</td>
+<td>p95 under 300 ms from our store. No live provider call on a read path except an explicit refresh.</td>
+</tr>
+<tr>
+<td>Decision write</td>
+<td>Synchronous, durable and audited before it is acknowledged.</td>
+</tr>
+<tr>
+<td>Webhook receiver</td>
+<td>Acknowledges in under 100 ms; processing is asynchronous.</td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>Minutes while a journey is young, decaying to hours after 24 h.</td>
+</tr>
+<tr>
+<td>Environment isolation</td>
+<td>Sandbox and production are never mixed. A journey is pinned to one for its lifetime.</td>
+</tr>
+<tr>
+<td>Audit durability</td>
+<td>The timeline is append-only. No rewrite, no retro-edit, no backfill that hides history.</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>OAuth2 client credentials, one client per system, scopes as the permission model.</td>
+</tr>
+<tr>
+<td>Encryption</td>
+<td>PII fields and artefacts encrypted at rest.</td>
+</tr>
+<tr>
+<td>Testability</td>
+<td>The contract is executable: a mock implementation of the API runs the whole process without a backend, as in <a href="../cdd-poc-app/">cdd poc app</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="compliance-requirements">Compliance requirements</h2>
+<p>The process exists to satisfy CDD obligations, so these are requirements, not commentary.
+<strong>The specific regulatory citations below are assumptions to be confirmed with Compliance
+before build</strong> — they are recorded here so the confirmation is explicit rather than implied.</p>
+<ul>
+<li>Customer due diligence and enhanced due diligence must be evidenced per subject before the
+  relationship proceeds, and the evidence retained for the regulated period (currently
+  5 years from the end of the relationship).</li>
+<li>PEP, sanctions and adverse media screening must be performed, and hits must be assessed and
+  dispositions recorded with a reason.</li>
+<li>Ongoing monitoring must continue for the appropriate period, and a post-decision hit must
+  have a route back to a fresh assessment.</li>
+<li>A named individual must own each decision, with the rationale recorded.</li>
+<li>Source of funds must be evidenced for the relevant property transactions, and the evidence
+  must survive independently of the provider.</li>
+<li>Consent from the subject for their identity data to be processed must be captured.</li>
+</ul>
+<p>Where regulation and the provider disagree — most visibly, where the provider says "closed"
+and the process still requires a human judgement — the process follows the regulation and
+the provider status is treated as an input, never an outcome.</p>
+<h2 id="where-this-is-specified-today">Where this is specified today</h2>
+<table>
+<thead>
+<tr>
+<th>This PRD</th>
+<th>Design detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phases, roles</td>
+<td><a href="../cdd-kyc-domain-model/">cdd kyc domain model</a>, [[cdd-journey-state-model]]</td>
+</tr>
+<tr>
+<td>SET, PLN, DSP, ENG, FND, MON</td>
+<td>[[internal-cdd-api]] §Endpoint surface, §Request envelope and validation</td>
+</tr>
+<tr>
+<td>OBS</td>
+<td>[[cdd-journey-state-model]] §Provider signal → internal transition, plus §Failure modes</td>
+</tr>
+<tr>
+<td>AUD, BIL</td>
+<td>[[internal-cdd-api]] §PII, retention and audit</td>
+</tr>
+<tr>
+<td>Contract</td>
+<td>[[internal-cdd-api-openapi.yaml]]</td>
+</tr>
+<tr>
+<td>Upstream facts and constraints</td>
+<td><a href="../thirdfort-api-notes/">thirdfort api notes</a></td>
+</tr>
+<tr>
+<td>Executable reference</td>
+<td><a href="../cdd-poc-app/">cdd poc app</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="release-phasing">Release phasing</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Contents</th>
+<th>Exit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0 — POC</strong></td>
+<td>The whole process simulated against a mock provider. Done — see <a href="../cdd-poc-app/">cdd poc app</a>.</td>
+<td>The vocabulary holds and the contract is executable.</td>
+</tr>
+<tr>
+<td><strong>1 — MVP</strong></td>
+<td>Intake, plan, dispatch, observe, decide, retain. Identity and screening journeys (v2 transaction), artefacts, audit, decisions.</td>
+<td>One real journey per subject, decided and evidenced, with no engineering involvement per case.</td>
+</tr>
+<tr>
+<td><strong>2 — Depth</strong></td>
+<td>Source of funds, proof of address and ownership, document verification, monitoring and findings, chargeability derivation, ops console.</td>
+<td>The common conveyancing journey runs end to end.</td>
+</tr>
+<tr>
+<td><strong>3 — Breadth</strong></td>
+<td>KYB, title documents (v3), post-decision re-assessment, MI, subject reuse.</td>
+<td>The process covers the firm's matter types without exception handling by hand.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="assumptions">Assumptions</h2>
+<ul>
+<li>The firm is a Thirdfort reseller, so chargeability derivation is required to bill. If that
+  changes, BIL-1 to BIL-3 become reporting-only.</li>
+<li>Thirdfort remains the sole provider for phase 1. The domain is designed so a second provider
+  is a repository rewrite, not a domain change.</li>
+<li>Provider tenant and stub-user mapping is established once per customer and cached.</li>
+<li>5 years from end of relationship remains the retention period. See Compliance above.</li>
+<li>The subject's own experience happens in the Thirdfort app and is not ours to design. If
+  that assumption breaks, ENG-1 to ENG-4 stop being sufficient.</li>
+</ul>
+<h2 id="risks">Risks</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Provider key rotation is undocumented, and v3 documents no audience</td>
+<td>Blocks production auth</td>
+<td>One integrator per environment until answered; treat the token minter as a single point of failure and instrument it</td>
+</tr>
+<tr>
+<td>Upstream rate limits are undocumented</td>
+<td>Sandbox surprises, throttling in production</td>
+<td>Self-imposed global cap and queue; measure empirically before load</td>
+</tr>
+<tr>
+<td>Monitoring semantics across a closed journey are unresolved</td>
+<td>Post-decision hits could be mishandled</td>
+<td>Current design raises a finding and requires re-decision; never moves state silently</td>
+</tr>
+<tr>
+<td>Provider changes the report payload shape</td>
+<td>Derived truth silently wrong</td>
+<td>Reconcile from the resource, pin and test the derivation against fixtures, alert on unknown report types</td>
+</tr>
+<tr>
+<td>Title availability and HMLR hours constrain the process</td>
+<td>Journeys stall out of hours</td>
+<td>Surface the window pre-emptively rather than failing at dispatch</td>
+</tr>
+</tbody>
+</table>
+<h2 id="open-questions">Open questions</h2>
+<p>Carried over from [[internal-cdd-api]], plus the ones this PRD exposes.</p>
+<ul>
+<li><strong>Monitoring across a decision.</strong> Re-open the journey, raise a new one, or add a finding and
+  require an explicit re-decision? Current design is the third.</li>
+<li><strong>Multi-matter subjects.</strong> Reuse prior artefacts for a person verified on another matter, or
+  force a fresh journey for evidential cleanliness? Leaning to a fresh journey referencing
+  the prior one.</li>
+<li><strong><code>ref</code> format.</strong> What is the canonical internal format, and is it stable enough to group
+  chargeability by?</li>
+<li><strong>Rate limits and key rotation.</strong> Both undocumented upstream.</li>
+<li><strong>Who may decide.</strong> Is the decision scope limited to a compliance role, or does a senior
+  case handler hold it for low-risk matters? This changes DEC-1 and the RBAC model.</li>
+<li><strong>EDD triggers.</strong> Which findings and risk ratings force enhanced due diligence, and is that
+  expressed in the process or left to the reviewer's judgement?</li>
+<li><strong>Retention start point.</strong> "End of relationship" needs a precise definition and the process
+  needs a field to hold it.</li>
+</ul>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<p>The process is done when, for a real matter and subject:</p>
+<ol>
+<li>CDD is planned, dispatched and completed through the internal API alone, with no one
+   touching Thirdfort directly.</li>
+<li>Every requirement's outcome, and the identity method actually completed, is correct
+   without reading a provider payload.</li>
+<li>A not-completed requirement is reported as not-completed, and the reviewer sees why.</li>
+<li>A named reviewer records a decision with a rationale, and the journey is closed by that
+   act and no other.</li>
+<li>An auditor can reconstruct the whole history — who asked for what, when, and on what
+   evidence — from the timeline and stored artefacts, without provider access.</li>
+<li>Finance can derive what to charge without recomputing it from payloads.</li>
+<li>Killing our webhook endpoint mid-flight changes nothing about the eventual outcome.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -9,8 +9,10 @@ repository. This folder holds discovery notes and the draft requirements.
 
 ## Project notes
 
-- [WIP API notes](wip-api-notes.md) upstream API facts captured 2026-10-15.
-- [WIP domain model](wip-domain-model.md) internal vocabulary and entities.
+- WIP API notes: upstream API facts captured 2026-10-15 (source note not
+  currently included in this vault).
+- WIP domain model: internal vocabulary and entities (source note not currently
+  included in this vault).
 - [WIP process PRD](WIP-process-prd.md)  draft for review.
 - [European property transaction WIP process](euro-property-transaction-wip-process.md) lifecycle, rules, and country differences.
 - [European property WIP entity](euro-wip-entity-model.md) logical record structure and relationships.

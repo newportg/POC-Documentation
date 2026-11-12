@@ -1,0 +1,44 @@
+@startuml
+!include <archimate/Archimate>
+
+title POC Address - Application Architecture
+
+Business_Actor(user, "Address user")
+
+Application_Component(addressApp, "Address browser app", "Static HTML, CSS and JavaScript")
+Application_Component(addressClient, "Loqate client", "Browser request helper")
+Application_Component(addressApi, "Address proxy API", "FastAPI service")
+Application_Component(cache, "Address response cache", "Process-local TTL cache")
+Application_Component(catalog, "Verified address catalogue", "Process-local catalogue")
+Application_Component(leaflet, "Leaflet map", "Browser map component")
+
+System_Software(loqate, "Loqate APIs")
+System_Software(osm, "OpenStreetMap tiles")
+
+Technology_Device browser, "Browser"
+Technology_Service localStorage, "Browser localStorage"
+
+Rel_Assignment(user, browser)
+Rel_Composition(browser, addressApp)
+Rel_UsedBy(addressApp, addressClient)
+Rel_Access(addressApp, localStorage, "API key and theme")
+Rel_UsedBy(addressApp, leaflet)
+Rel_Flow(addressClient, addressApi, "Search, retrieve and catalogue HTTP requests")
+Rel_UsedBy(addressApi, cache, "Cache successful search/retrieve results")
+Rel_UsedBy(addressApi, catalog, "Store successfully verified addresses")
+Rel_Flow(addressApi, loqate, "Find and verify HTTPS requests")
+Rel_Flow(leaflet, osm, "Map tile requests")
+
+note right of addressApi
+  Endpoints:
+  /health
+  /heartbeat
+  /api/addresses/search
+  /api/addresses/retrieve
+  /api/addresses/catalog
+
+  Cache keys use an API-key fingerprint.
+  Cache and catalogue are non-durable.
+end note
+
+@enduml

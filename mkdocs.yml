@@ -1,0 +1,96 @@
+site_name: POC Documentation
+site_description: Project research, architecture, and proof-of-concept documentation
+site_url: https://newportg.github.io/POC-Documentation/
+repo_url: https://github.com/newportg/POC-Documentation
+repo_name: newportg/POC-Documentation
+hooks:
+  - mkdocs_hooks.py
+
+docs_dir: POC-Documentation-Vault
+site_dir: _site
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - tables
+
+exclude_docs: |
+  .obsidian/
+  .copilot/
+  copilot/
+  skills/
+  prompts/
+  raw/
+  archive/
+  _site/
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: README.md
+  - Projects:
+      - Address:
+          - Overview: projects/Address/README.md
+          - Architecture: projects/Address/architecture.md
+          - Application design: projects/Address/Poc-Design.md
+          - Loqate API: projects/Address/Loqate-api.md
+          - Addressing standards: projects/Address/Overview.md
+          - UPU S42: projects/Address/UPU-S42.md
+          - ISO 20022: projects/Address/ISO-20022.md
+          - UK address format: projects/Address/UK-Address-Format.md
+      - Asset:
+          - Overview: projects/Asset/README.md
+          - Architecture: projects/Asset/architecture.md
+          - Product requirements: projects/Asset/asset-prd.md
+      - Party:
+          - Overview: projects/Party/README.md
+          - Architecture: projects/Party/architecture.md
+          - Product requirements: projects/Party/party-prd.md
+          - Individual model: projects/Party/individual-model.md
+          - Company model: projects/Party/company-model.md
+      - Instruction:
+          - Overview: projects/Instruction/README.md
+          - Product requirements: projects/Instruction/instruction-prd.md
+          - Graph: projects/Instruction/graph.md
+      - WIP:
+          - Overview: projects/WIP/README.md
+          - Process requirements: projects/WIP/WIP-process-prd.md
+          - Property transaction process: projects/WIP/euro-property-transaction-wip-process.md
+          - Entity model: projects/WIP/euro-wip-entity-model.md
+      - Thirdfort:
+          - Overview: projects/thirdfort/README.md
+          - CDD/ KYC domain model: projects/thirdfort/cdd-kyc-domain-model.md
+          - CDD POC app: projects/thirdfort/cdd-poc-app.md
+          - Internal CDD process: projects/thirdfort/internal-cdd-process-prd.md
+          - Thirdfort API notes: projects/thirdfort/thirdfort-api-notes.md
+  - Wiki:
+      - Project organisation: wiki/application-project-organisation.md
+      - Projects index: wiki/projects.md
