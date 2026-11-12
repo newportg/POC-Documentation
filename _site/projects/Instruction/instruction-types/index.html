@@ -1,0 +1,2647 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project research, architecture, and proof-of-concept documentation">
+      
+      
+      
+        <link rel="canonical" href="https://newportg.github.io/POC-Documentation/projects/Instruction/instruction-types/">
+      
+      
+        <link rel="prev" href="../instruction-prd/">
+      
+      
+        <link rel="next" href="../instruction-database-structure/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Instruction types and information requirements - POC Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instruction-types-and-information-requirements" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="POC Documentation" class="md-header__button md-logo" aria-label="POC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            POC Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Instruction types and information requirements
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/newportg/POC-Documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    newportg/POC-Documentation
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="POC Documentation" class="md-nav__button md-logo" aria-label="POC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    POC Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/newportg/POC-Documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    newportg/POC-Documentation
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Address
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/Poc-Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/Loqate-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loqate API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Addressing standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/UPU-S42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UPU S42
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/ISO-20022/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ISO 20022
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Address/uk-address-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UK address format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Asset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Asset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Asset/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Asset/asset-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Party
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Party
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/party-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/individual-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Individual model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Party/company-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instruction-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product requirements
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruction types and information requirements
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruction types and information requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two classifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two classifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-record-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared record type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-line-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service-line type
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-information-required-for-every-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common information required for every Instruction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-specific-information-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type-specific information requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type-specific information requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capital-markets-poc_deal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capital Markets — poc_Deal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oss-poc_engagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OSS — poc_Engagement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valuations-poc_valuationinstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valuations — poc_ValuationInstruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leasing-poc_lease" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leasing — poc_Lease
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residential-sales-poc_salesinstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Residential Sales — poc_SalesInstruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residential-lettings-poc_lettingsinstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Residential Lettings — poc_LettingsInstruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-management-poc_propertymandate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Management — poc_PropertyMandate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capital-advisory-poc_debtmandate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capital Advisory — poc_DebtMandate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investor-advisory-poc_investormandate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Investor Advisory — poc_InvestorMandate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-poc_developmentproject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development — poc_DevelopmentProject
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-consultancy-poc_buildingsurvey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Consultancy — poc_BuildingSurvey
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workplace-consulting-poc_workplaceassessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workplace Consulting — poc_WorkplaceAssessment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esg-consultancy-poc_esgassessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ESG Consultancy — poc_ESGAssessment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-cutting-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-cutting information
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-and-unresolved-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source and unresolved decisions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instruction-database-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruction database structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WIP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WIP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/WIP-process-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/euro-property-transaction-wip-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Property transaction process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIP/euro-wip-entity-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entity model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thirdfort
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Thirdfort
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/cdd-kyc-domain-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CDD/ KYC domain model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/cdd-poc-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CDD POC app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/internal-cdd-process-prd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Internal CDD process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../thirdfort/thirdfort-api-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thirdfort API notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiki
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Wiki
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/application-project-organisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project organisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two classifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two classifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-record-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared record type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-line-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service-line type
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-information-required-for-every-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common information required for every Instruction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-specific-information-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type-specific information requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type-specific information requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capital-markets-poc_deal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capital Markets — poc_Deal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oss-poc_engagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OSS — poc_Engagement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valuations-poc_valuationinstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valuations — poc_ValuationInstruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leasing-poc_lease" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leasing — poc_Lease
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residential-sales-poc_salesinstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Residential Sales — poc_SalesInstruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residential-lettings-poc_lettingsinstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Residential Lettings — poc_LettingsInstruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-management-poc_propertymandate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Management — poc_PropertyMandate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capital-advisory-poc_debtmandate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capital Advisory — poc_DebtMandate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investor-advisory-poc_investormandate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Investor Advisory — poc_InvestorMandate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-poc_developmentproject" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development — poc_DevelopmentProject
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-consultancy-poc_buildingsurvey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building Consultancy — poc_BuildingSurvey
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workplace-consulting-poc_workplaceassessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workplace Consulting — poc_WorkplaceAssessment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#esg-consultancy-poc_esgassessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ESG Consultancy — poc_ESGAssessment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-cutting-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-cutting information
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-and-unresolved-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source and unresolved decisions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="instruction-types-and-information-requirements">Instruction types and information requirements</h1>
+<p>This reference consolidates the previous Instruction wiki with the current
+<code>poc_Instruction</code> product requirements. It distinguishes the shared record type
+from the service line that supplies the specialised work record.</p>
+<h2 id="two-classifications">Two classifications</h2>
+<h3 id="shared-record-type">Shared record type</h3>
+<p>Every <code>poc_Instruction</code> has exactly one value for <code>poc_instructiontype</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Record type</th>
+<th>Meaning</th>
+<th>Typical service lines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mandate</strong></td>
+<td>An ongoing or recurring appointment to act.</td>
+<td>Capital Advisory, Property Management, Investor Advisory</td>
+</tr>
+<tr>
+<td><strong>Engagement</strong></td>
+<td>A scoped professional-services engagement.</td>
+<td>OSS, Development, Building Consultancy, Workplace, ESG</td>
+</tr>
+<tr>
+<td><strong>Instruction</strong></td>
+<td>A directive to act on a defined matter or transaction.</td>
+<td>Capital Markets, Valuations, Leasing, Residential Sales, Residential Lettings</td>
+</tr>
+</tbody>
+</table>
+<p>These are finance-layer classifications. They are not the same as the
+service-line process stage called “Instruction”.</p>
+<h3 id="service-line-type">Service-line type</h3>
+<p>Each record must populate exactly one service-line parent lookup, selected by
+<code>poc_serviceline</code>. The parent lookup must agree with the selected service line.</p>
+<table>
+<thead>
+<tr>
+<th>Service line</th>
+<th>Parent record</th>
+<th>Shared type</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capital Markets</td>
+<td><code>poc_Deal</code></td>
+<td>Instruction</td>
+<td>Investment acquisitions, disposals, capital raising, and transactions</td>
+</tr>
+<tr>
+<td>OSS</td>
+<td><code>poc_Engagement</code></td>
+<td>Engagement</td>
+<td>Corporate occupier advisory, workplace strategy, location search, and lease negotiation</td>
+</tr>
+<tr>
+<td>Valuations</td>
+<td><code>poc_ValuationInstruction</code></td>
+<td>Instruction</td>
+<td>RICS-regulated valuations</td>
+</tr>
+<tr>
+<td>Leasing</td>
+<td><code>poc_Lease</code></td>
+<td>Instruction</td>
+<td>Commercial landlord and tenant representation</td>
+</tr>
+<tr>
+<td>Residential Sales</td>
+<td><code>poc_SalesInstruction</code></td>
+<td>Instruction</td>
+<td>Marketing and selling a residential property</td>
+</tr>
+<tr>
+<td>Residential Lettings</td>
+<td><code>poc_LettingsInstruction</code></td>
+<td>Instruction</td>
+<td>Letting a residential property, with optional management</td>
+</tr>
+<tr>
+<td>Property Management</td>
+<td><code>poc_PropertyMandate</code></td>
+<td>Mandate</td>
+<td>Lease administration, service charges, maintenance, rent collection</td>
+</tr>
+<tr>
+<td>Capital Advisory</td>
+<td><code>poc_DebtMandate</code></td>
+<td>Mandate</td>
+<td>Debt and structured finance</td>
+</tr>
+<tr>
+<td>Investor Advisory</td>
+<td><code>poc_InvestorMandate</code></td>
+<td>Mandate</td>
+<td>Investment strategy, sourcing, and portfolio reporting</td>
+</tr>
+<tr>
+<td>Development</td>
+<td><code>poc_DevelopmentProject</code></td>
+<td>Engagement</td>
+<td>Feasibility, planning strategy, and development management</td>
+</tr>
+<tr>
+<td>Building Consultancy</td>
+<td><code>poc_BuildingSurvey</code></td>
+<td>Engagement</td>
+<td>Surveys, dilapidations, monitoring, and technical due diligence</td>
+</tr>
+<tr>
+<td>Workplace Consulting</td>
+<td><code>poc_WorkplaceAssessment</code></td>
+<td>Engagement</td>
+<td>Space utilisation, design, and change management</td>
+</tr>
+<tr>
+<td>ESG Consultancy</td>
+<td><code>poc_ESGAssessment</code></td>
+<td>Engagement</td>
+<td>Energy audits, CRREM analysis, net-zero pathways, and certification</td>
+</tr>
+</tbody>
+</table>
+<p>The source material says “twelve service lines” but lists thirteen parent
+lookups. Residential Lettings also lacks a fully defined target table in one
+source. This mapping must be approved before implementation.</p>
+<h2 id="common-information-required-for-every-instruction">Common information required for every Instruction</h2>
+<p>The following fields belong on the shared <code>poc_Instruction</code> record unless the
+approved schema says otherwise:</p>
+<ul>
+<li>Stable identifier: <code>poc_instructionid</code>.</li>
+<li>Generated reference: <code>poc_name</code>, proposed format <code>INS-{SEQNUM:6}</code>.</li>
+<li>Shared record type: <code>poc_instructiontype</code>.</li>
+<li>Service line: <code>poc_serviceline</code>.</li>
+<li>Exactly one matching service-line parent lookup.</li>
+<li>Brand/Group client account: <code>poc_clientaccountid</code>.</li>
+<li>Owning office/business unit: <code>poc_owningoffice</code>.</li>
+<li>Start date: <code>poc_startdate</code>.</li>
+<li>Status: Active, Completed, On Hold, or Withdrawn.</li>
+<li>Optional primary contact: <code>poc_primarycontactid</code>.</li>
+<li>Optional primary property: <code>poc_propertyid</code>.</li>
+<li>Legal Entity account for contracting and invoicing, when known:
+  <code>poc_legalentityaccountid</code>.</li>
+<li>Optional signed date, end date, expected revenue, comments, and finance
+  references.</li>
+<li>Termination reason when status is Withdrawn.</li>
+<li>Creation/update timestamps and attributable change history.</li>
+</ul>
+<p>The client account identifies the relationship owner. It must not be confused
+with the Legal Entity account used for the fee letter or invoice.</p>
+<h2 id="type-specific-information-requirements">Type-specific information requirements</h2>
+<h3 id="capital-markets-poc_deal">Capital Markets — <code>poc_Deal</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Deal or transaction reference and the linked <code>poc_Deal</code>.</li>
+<li>Brand/Group client and contracting Legal Entity.</li>
+<li>Transaction type: acquisition, disposal, capital raising, or other approved
+  transaction classification.</li>
+<li>Owning office, service line, start date, status, and expected revenue.</li>
+<li>Primary property or portfolio association where applicable.</li>
+<li>Transaction parties, jurisdictions, and cross-border context.</li>
+<li>Mandate or signed date when the approved Capital Markets gate requires it.</li>
+<li>KYC, conflict, and intercompany billing evidence as process controls.</li>
+</ul>
+<p>The Capital Markets process uses Instruction as stage S3 after Origination and
+Pitch/Mandate. The stage and compliance gates are not substitutes for the
+shared Instruction fields.</p>
+<h3 id="oss-poc_engagement">OSS — <code>poc_Engagement</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Engagement reference and linked <code>poc_Engagement</code>.</li>
+<li>Brand/Group client and Legal Entity.</li>
+<li>Occupier or workplace advisory scope.</li>
+<li>Relevant properties, locations, lease events, or search criteria.</li>
+<li>Responsible office, lead adviser, start date, status, and commercial terms.</li>
+<li>Expected revenue and any agreed milestones or deliverables.</li>
+</ul>
+<h3 id="valuations-poc_valuationinstruction">Valuations — <code>poc_ValuationInstruction</code></h3>
+<p>Required information:</p>
+<ul>
+<li>Instructing Account: <code>poc_accountid</code>.</li>
+<li>Optional or required contact and property, according to the valuation case.</li>
+<li>Valuation purpose: Secured Lending, Fund Reporting, Acquisition, Disposal,
+  Insurance, Tax, or Financial Statements.</li>
+<li>Valuation basis: Market Value, Market Rent, Fair Value, DRC, or
+  Reinstatement.</li>
+<li>Instruction date: <code>poc_instructiondate</code>.</li>
+<li>Report due date: <code>poc_reportduedate</code>.</li>
+<li>Assigned valuer: <code>poc_valuer</code>.</li>
+<li>Required conflict-checked flag: <code>poc_conflictchecked</code>.</li>
+</ul>
+<p>Typically also required or captured:</p>
+<ul>
+<li>Inspection date and report-issued date.</li>
+<li>Reviewer and fee.</li>
+<li>Market value, market rent, yield applied, and special assumptions.</li>
+<li>Status and process stage from Received through Issued.</li>
+</ul>
+<h3 id="leasing-poc_lease">Leasing — <code>poc_Lease</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Linked lease record and client/Legal Entity.</li>
+<li>Landlord or tenant role and the relevant property.</li>
+<li>Representation type and lease objective.</li>
+<li>Lease term, rent, key dates, and renewal or break events where applicable.</li>
+<li>Responsible handler, office, start date, status, scope, and fee terms.</li>
+</ul>
+<p>The source material does not define a complete <code>poc_Lease</code> field list in the
+previous wiki. The lease-specific contract requires confirmation.</p>
+<h3 id="residential-sales-poc_salesinstruction">Residential Sales — <code>poc_SalesInstruction</code></h3>
+<p>Required information:</p>
+<ul>
+<li>Vendor account: <code>poc_vendoraccountid</code>.</li>
+<li>Vendor contact: <code>poc_vendorcontactid</code>.</li>
+<li>Residential property: <code>poc_respropertyid</code>.</li>
+<li>Sales variant: Sole Agency, Joint Sole Agency, Multi Agency, Private Treaty,
+  Auction, or Tender.</li>
+<li>Instruction date: <code>poc_instructiondate</code>.</li>
+<li>Asking price: <code>poc_askingprice</code>.</li>
+<li>Commission percentage: <code>poc_commissionpercent</code>.</li>
+<li>Negotiator: <code>poc_negotiator</code>.</li>
+<li>Office: <code>poc_officebu</code>.</li>
+</ul>
+<p>Also capture when applicable:</p>
+<ul>
+<li>Instruction expiry, guide-price range, achieved price, and minimum
+  commission.</li>
+<li>Marketing launch, under-offer, exchange, and completion dates.</li>
+<li>Instruction stage and status, including Fallen Through where supported.</li>
+<li>Viewing and offer counts.</li>
+</ul>
+<h3 id="residential-lettings-poc_lettingsinstruction">Residential Lettings — <code>poc_LettingsInstruction</code></h3>
+<p>Required information:</p>
+<ul>
+<li>Landlord account: <code>poc_landlordaccountid</code>.</li>
+<li>Landlord contact: <code>poc_landlordcontactid</code>.</li>
+<li>Residential property: <code>poc_respropertyid</code>.</li>
+<li>Lettings variant: Sole Agency, Joint, Multi, Let Only, Let &amp; Manage, or Full
+  Management.</li>
+<li>Instruction date: <code>poc_instructiondate</code>.</li>
+<li>Weekly rent: <code>poc_weeklyrent</code>.</li>
+<li>Commission percentage: <code>poc_commissionpercent</code>.</li>
+<li>Negotiator: <code>poc_negotiator</code>.</li>
+</ul>
+<p>Also capture when applicable:</p>
+<ul>
+<li>Instruction expiry, monthly/annual calculated rent, and management fee
+  percentage for managed variants.</li>
+<li>Minimum tenancy term and furnishing.</li>
+<li>Marketing launch, let-agreed, and tenancy-start dates.</li>
+<li>Tenant after let-agreed, status, stage, and notes.</li>
+</ul>
+<h3 id="property-management-poc_propertymandate">Property Management — <code>poc_PropertyMandate</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Linked property-management mandate.</li>
+<li>Client/Brand account and Legal Entity.</li>
+<li>Property or portfolio covered by the mandate.</li>
+<li>Scope: lease administration, service charges, maintenance, rent collection,
+  or other approved services.</li>
+<li>Management term, start date, responsible office, handler, status, and fee
+  basis.</li>
+<li>Property portfolio links through <code>poc_DealProperty</code> where more than one
+  property is covered.</li>
+</ul>
+<h3 id="capital-advisory-poc_debtmandate">Capital Advisory — <code>poc_DebtMandate</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Linked debt mandate.</li>
+<li>Borrower/client and Legal Entity.</li>
+<li>Lender or financing counterparty.</li>
+<li>Loan amount, debt product, funding purpose, and financing conditions.</li>
+<li>Relevant property or development, jurisdictions, and transaction dates.</li>
+<li>Responsible office, adviser, start date, status, scope, and fee terms.</li>
+</ul>
+<h3 id="investor-advisory-poc_investormandate">Investor Advisory — <code>poc_InvestorMandate</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Linked investor mandate.</li>
+<li>Institutional investor/client and Legal Entity.</li>
+<li>Investment strategy, mandate scope, geography, and asset class.</li>
+<li>Portfolio or property associations.</li>
+<li>Sourcing, reporting, or portfolio-management deliverables.</li>
+<li>Responsible office, adviser, start date, status, and fee terms.</li>
+</ul>
+<h3 id="development-poc_developmentproject">Development — <code>poc_DevelopmentProject</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Linked development project.</li>
+<li>Client/developer and Legal Entity.</li>
+<li>Development site or property portfolio.</li>
+<li>Feasibility, planning, development-management, or delivery scope.</li>
+<li>Programme milestones, planning status, responsible office, start date,
+  status, and commercial terms.</li>
+</ul>
+<h3 id="building-consultancy-poc_buildingsurvey">Building Consultancy — <code>poc_BuildingSurvey</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Linked building survey or consultancy record.</li>
+<li>Client/Legal Entity and subject property.</li>
+<li>Survey, dilapidations, project-monitoring, or technical due-diligence scope.</li>
+<li>Inspection requirements, deliverables, report deadline, and assumptions.</li>
+<li>Assigned surveyor, reviewer where required, office, start date, status, and
+  fee.</li>
+</ul>
+<h3 id="workplace-consulting-poc_workplaceassessment">Workplace Consulting — <code>poc_WorkplaceAssessment</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Linked workplace assessment.</li>
+<li>Client/Legal Entity and relevant sites.</li>
+<li>Scope such as utilisation, workplace design, location strategy, or change
+  management.</li>
+<li>Required outputs, milestones, responsible adviser, office, start date,
+  status, and fee terms.</li>
+</ul>
+<h3 id="esg-consultancy-poc_esgassessment">ESG Consultancy — <code>poc_ESGAssessment</code></h3>
+<p>Required or expected information:</p>
+<ul>
+<li>Linked ESG assessment.</li>
+<li>Client/Legal Entity and relevant property or portfolio.</li>
+<li>Scope such as energy audit, CRREM analysis, net-zero pathway, or
+  certification.</li>
+<li>Assets, reporting boundary, target dates, assumptions, responsible
+  consultant, office, status, and fee terms.</li>
+</ul>
+<h2 id="cross-cutting-information">Cross-cutting information</h2>
+<p>An Instruction may cover multiple properties. Store one optional primary
+property on <code>poc_propertyid</code>, and use the <code>poc_DealProperty</code> junction for the
+complete portfolio and its history.</p>
+<p>WIP records reference <code>poc_WIP.poc_instructionid</code>. WIP must obtain service-line
+context through the Instruction rather than carrying separate service-line
+parent lookups.</p>
+<p>Instruction status, process stage, KYC/AML, conflict checks, authority to act,
+and audit history are control information in addition to the matter payload.
+They must not be omitted merely because the specialised service-line table
+contains the commercial details.</p>
+<h2 id="source-and-unresolved-decisions">Source and unresolved decisions</h2>
+<p>This reference is based on the previous Instruction wiki and the current
+Instruction PRD. Before implementation, confirm:</p>
+<ol>
+<li>The authoritative list and count of service lines and parent lookups.</li>
+<li>Whether Mandate, Engagement, and Instruction are mutually exclusive
+   business types or labels with different lifecycle rules.</li>
+<li>The final field list where the Core and older CRM definitions conflict.</li>
+<li>The timing of Legal Entity, signed-date, Active-status, and WIP-entry
+   requirements.</li>
+<li>Status transitions, withdrawal cascades, and historical snapshot rules.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../javascripts/mermaid-init.js"></script>
+      
+    
+  </body>
+</html>

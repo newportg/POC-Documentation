@@ -87,6 +87,8 @@ nav:
       - Instruction:
           - Overview: projects/Instruction/README.md
           - Product requirements: projects/Instruction/instruction-prd.md
+          - Instruction types and information requirements: projects/Instruction/instruction-types.md
+          - Instruction database structure: projects/Instruction/instruction-database-structure.md
           - Graph: projects/Instruction/graph.md
       - WIP:
           - Overview: projects/WIP/README.md

@@ -19,6 +19,12 @@ requirements and unresolved source conflicts.
 
 [[instruction-prd|Instruction — Product Requirements Document]]
 
+## Information requirements
+
+[[instruction-types|Instruction types and information requirements]]
+
+[[instruction-database-structure|Instruction database structure]]
+
 ## Application documentation
 
 The internal API design, OpenAPI draft, journey state model, and runnable browser POC
